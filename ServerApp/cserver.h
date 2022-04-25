@@ -5,7 +5,7 @@
 #include <QDebug>           //pentru afisarea mesajelor
 #include <QTcpSocket>       //pt socketuri
 
-#include "cclientthread.h"
+#include "CClientList.h"
 
 class CServer : public QTcpServer       //clasa singleton
 {
@@ -13,6 +13,7 @@ class CServer : public QTcpServer       //clasa singleton
 
 private:
     static CServer *instance;
+    CClientList& list;
 
 public:
     static CServer &getInstance();

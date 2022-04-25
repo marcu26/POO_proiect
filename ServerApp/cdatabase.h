@@ -13,6 +13,8 @@ private:
 
 private:
      bool usernameExist(const QString &username);
+     QString getPlayerID(QString username);
+     QStringList identifyResources(QString idPlayer);
 
 public:
      CDataBase();
@@ -21,6 +23,8 @@ public:
     void readCredentials();
     bool verifyCredentials(const QString &username, const QString &pass);
     int addUser(const QString &username, const QString &pass);
+    QString getResources(const QString &username);
+    void updateResources(QStringList l, QString username);
 };
 
 #endif // CDATABASE_H

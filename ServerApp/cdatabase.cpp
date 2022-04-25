@@ -42,6 +42,24 @@ void CDataBase::readCredentials()
         }
 }
 
+QString CDataBase::getPlayerID(QString username)
+{
+    QSqlQuery query ;
+    query.exec("SELECT * FROM Credentials");
+
+    while(query.next())
+       {
+        QString id = query.value(0).toString();
+        QString sqlName = query.value(1).toString();
+        QStringList l =  sqlName.split(" ");
+
+        if (username == l.value(0))
+            return id;
+
+       }
+    return "";
+}
+
 bool CDataBase::verifyCredentials(const QString &username, const QString &pass)
 {
     credentials.clear();
@@ -49,8 +67,9 @@ bool CDataBase::verifyCredentials(const QString &username, const QString &pass)
 
     for(auto &it:credentials)
     {
-        if(it.first == username && it.second== pass)
-            return true;
+        if(it.first == username && it.second== pass)       
+                return true;
+
     }
     return false;
 }
@@ -80,9 +99,71 @@ int CDataBase::addUser(const QString &username, const QString &pass)
                 "VALUES ('"+username+"'"+","+"'"+pass+"');";
 
     query.exec(insertValue);
+    QString id = getPlayerID(username);
+
+    if(id== "")
+        return -1;
+
+    insertValue = ("INSERT INTO Resurse (PlayerID, Muncitori, Galbeni, AutorizatieMilitara, AutorizatieMedicala, Cavalerie, Soldati, Medici) "
+                 "VALUES (?,?,?,?,?,?,?,?)");
+    query.prepare(insertValue);
+    query.bindValue(0,id.toInt());
+    query.bindValue(1,5);
+    query.bindValue(2,300);
+    query.bindValue(3,0);
+    query.bindValue(4,0);
+    query.bindValue(5,0);
+    query.bindValue(6,0);
+    query.bindValue(7,0);
+    query.exec();
 
     credentials.clear();
     readCredentials();              //facem update la lista 
 
     return 1;
+}
+
+QStringList CDataBase::identifyResources(QString idPlayer)
+{
+    QSqlQuery query;
+    query.exec("SELECT * FROM Resurse");
+
+    while (query.next())
+    {   
+        QString id = query.value(1).toString();
+        QString str = query.value(2).toString() + " " + query.value(3).toString() + " " + query.value(4).toString() + " " + query.value(5).toString() + " " + query.value(6).toString() + " " + query.value(7).toString() + " " + query.value(8).toString();
+        QStringList l = str.split(QRegularExpression("\\W+"), Qt::SkipEmptyParts);
+
+        if (id == idPlayer)
+        {
+            return l;
+        }
+    }
+   QStringList l;
+   l.push_back("");
+   return l;
+}
+
+QString CDataBase::getResources(const QString& username)
+{
+    QString id = getPlayerID(username);
+    QStringList l = identifyResources(id);
+
+    QString res = "";
+
+    for (auto& it : l)
+    {
+        res += it;
+        res += " ";
+    }
+
+    return res;
+}
+
+void CDataBase::updateResources(QStringList l, QString username)
+{
+    QString id = getPlayerID(username);
+    QString updateQuery = "UPDATE Resurse SET Muncitori = " + l.value(1) + ",Galbeni =" + l.value(2) + ",AutorizatieMilitara=" + l.value(3) + ",AutorizatieMedicala=" + l.value(4) + ",Cavalerie=" + l.value(5) + ",Soldati=" + l.value(6) + ",Medici=" + l.value(7) + "WHERE PlayerID = " + id;
+    QSqlQuery query;
+    query.exec(updateQuery);
 }
