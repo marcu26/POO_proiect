@@ -1,5 +1,5 @@
 /****************************************************************************
-** Meta object code from reading C++ file 'connectw.h'
+** Meta object code from reading C++ file 'windowlogin.h'
 **
 ** Created by: The Qt Meta Object Compiler version 68 (Qt 6.2.3)
 **
@@ -7,11 +7,11 @@
 *****************************************************************************/
 
 #include <memory>
-#include "../../AncientClient/connectw.h"
+#include "../../AncientClient/windowlogin.h"
 #include <QtCore/qbytearray.h>
 #include <QtCore/qmetatype.h>
 #if !defined(Q_MOC_OUTPUT_REVISION)
-#error "The header file 'connectw.h' doesn't include <QObject>."
+#error "The header file 'windowlogin.h' doesn't include <QObject>."
 #elif Q_MOC_OUTPUT_REVISION != 68
 #error "This file was generated using the moc from 6.2.3. It"
 #error "cannot be used with the include files from this version of Qt."
@@ -21,26 +21,26 @@
 QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
-struct qt_meta_stringdata_ConnectW_t {
+struct qt_meta_stringdata_WindowLogIn_t {
     const uint offsetsAndSize[8];
-    char stringdata0[56];
+    char stringdata0[50];
 };
 #define QT_MOC_LITERAL(ofs, len) \
-    uint(offsetof(qt_meta_stringdata_ConnectW_t, stringdata0) + ofs), len 
-static const qt_meta_stringdata_ConnectW_t qt_meta_stringdata_ConnectW = {
+    uint(offsetof(qt_meta_stringdata_WindowLogIn_t, stringdata0) + ofs), len 
+static const qt_meta_stringdata_WindowLogIn_t qt_meta_stringdata_WindowLogIn = {
     {
-QT_MOC_LITERAL(0, 8), // "ConnectW"
-QT_MOC_LITERAL(9, 23), // "on_pushButton_4_clicked"
-QT_MOC_LITERAL(33, 0), // ""
-QT_MOC_LITERAL(34, 21) // "on_pushButton_clicked"
+QT_MOC_LITERAL(0, 11), // "WindowLogIn"
+QT_MOC_LITERAL(12, 16), // "on_BackB_clicked"
+QT_MOC_LITERAL(29, 0), // ""
+QT_MOC_LITERAL(30, 19) // "on_finnishB_clicked"
 
     },
-    "ConnectW\0on_pushButton_4_clicked\0\0"
-    "on_pushButton_clicked"
+    "WindowLogIn\0on_BackB_clicked\0\0"
+    "on_finnishB_clicked"
 };
 #undef QT_MOC_LITERAL
 
-static const uint qt_meta_data_ConnectW[] = {
+static const uint qt_meta_data_WindowLogIn[] = {
 
  // content:
       10,       // revision
@@ -64,28 +64,28 @@ static const uint qt_meta_data_ConnectW[] = {
        0        // eod
 };
 
-void ConnectW::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+void WindowLogIn::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     if (_c == QMetaObject::InvokeMetaMethod) {
-        auto *_t = static_cast<ConnectW *>(_o);
+        auto *_t = static_cast<WindowLogIn *>(_o);
         (void)_t;
         switch (_id) {
-        case 0: _t->on_pushButton_4_clicked(); break;
-        case 1: _t->on_pushButton_clicked(); break;
+        case 0: _t->on_BackB_clicked(); break;
+        case 1: _t->on_finnishB_clicked(); break;
         default: ;
         }
     }
     (void)_a;
 }
 
-const QMetaObject ConnectW::staticMetaObject = { {
+const QMetaObject WindowLogIn::staticMetaObject = { {
     QMetaObject::SuperData::link<QDialog::staticMetaObject>(),
-    qt_meta_stringdata_ConnectW.offsetsAndSize,
-    qt_meta_data_ConnectW,
+    qt_meta_stringdata_WindowLogIn.offsetsAndSize,
+    qt_meta_data_WindowLogIn,
     qt_static_metacall,
     nullptr,
-qt_incomplete_metaTypeArray<qt_meta_stringdata_ConnectW_t
-, QtPrivate::TypeAndForceComplete<ConnectW, std::true_type>
+qt_incomplete_metaTypeArray<qt_meta_stringdata_WindowLogIn_t
+, QtPrivate::TypeAndForceComplete<WindowLogIn, std::true_type>
 , QtPrivate::TypeAndForceComplete<void, std::false_type>, QtPrivate::TypeAndForceComplete<void, std::false_type>
 
 
@@ -94,20 +94,20 @@ qt_incomplete_metaTypeArray<qt_meta_stringdata_ConnectW_t
 } };
 
 
-const QMetaObject *ConnectW::metaObject() const
+const QMetaObject *WindowLogIn::metaObject() const
 {
     return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
 }
 
-void *ConnectW::qt_metacast(const char *_clname)
+void *WindowLogIn::qt_metacast(const char *_clname)
 {
     if (!_clname) return nullptr;
-    if (!strcmp(_clname, qt_meta_stringdata_ConnectW.stringdata0))
+    if (!strcmp(_clname, qt_meta_stringdata_WindowLogIn.stringdata0))
         return static_cast<void*>(this);
     return QDialog::qt_metacast(_clname);
 }
 
-int ConnectW::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+int WindowLogIn::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QDialog::qt_metacall(_c, _id, _a);
     if (_id < 0)

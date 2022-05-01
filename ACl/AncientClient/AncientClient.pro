@@ -25,12 +25,13 @@ SOURCES += \
     ICaracter.cpp \
     ICladire.cpp \
     IException.cpp \
-    client.cpp \
-    connectw.cpp \
+    Singleton.cpp \
     main.cpp \
     mainwindow.cpp \
-    singinwindow.cpp \
-    singletonwo.cpp
+    windowadunare.cpp \
+    windowattack.cpp \
+    windowlogin.cpp \
+    windowsingin.cpp
 
 HEADERS += \
     ACaracter.h \
@@ -48,16 +49,19 @@ HEADERS += \
     ICaracter.h \
     ICladire.h \
     IException.h \
-    client.h \
-    connectw.h \
+    Singleton.h \
     mainwindow.h \
-    singinwindow.h \
-    singletonwo.h
+    windowadunare.h \
+    windowattack.h \
+    windowlogin.h \
+    windowsingin.h
 
 FORMS += \
-    connectw.ui \
     mainwindow.ui \
-    singinwindow.ui
+    windowadunare.ui \
+    windowattack.ui \
+    windowlogin.ui \
+    windowsingin.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
@@ -65,4 +69,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 DISTFILES += \
-    AncientClient.pro.user
+    AncientClient.pro.user \
+    Media/poza.png \
+    Media/poza1.jpg

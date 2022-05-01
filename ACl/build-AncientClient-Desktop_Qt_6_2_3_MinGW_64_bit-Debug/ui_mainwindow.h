@@ -38,22 +38,23 @@ public:
         if (MainWindow->objectName().isEmpty())
             MainWindow->setObjectName(QString::fromUtf8("MainWindow"));
         MainWindow->resize(800, 600);
-        MainWindow->setContextMenuPolicy(Qt::DefaultContextMenu);
+        MainWindow->setMinimumSize(QSize(800, 600));
+        MainWindow->setMaximumSize(QSize(800, 600));
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         LogInB = new QPushButton(centralwidget);
         LogInB->setObjectName(QString::fromUtf8("LogInB"));
-        LogInB->setGeometry(QRect(200, 340, 101, 31));
+        LogInB->setGeometry(QRect(210, 390, 101, 31));
         LogInB->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);\n"
 "background-color: rgba(0, 0, 0,80%);"));
         SingInB = new QPushButton(centralwidget);
         SingInB->setObjectName(QString::fromUtf8("SingInB"));
-        SingInB->setGeometry(QRect(480, 340, 101, 31));
+        SingInB->setGeometry(QRect(490, 390, 101, 31));
         SingInB->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);\n"
 "background-color: rgba(0, 0, 0,80%);"));
         frame = new QFrame(centralwidget);
         frame->setObjectName(QString::fromUtf8("frame"));
-        frame->setGeometry(QRect(120, 60, 561, 121));
+        frame->setGeometry(QRect(120, 30, 560, 120));
         frame->setStyleSheet(QString::fromUtf8("background-color: rgba(0, 0, 0,60%);"));
         frame->setFrameShape(QFrame::StyledPanel);
         frame->setFrameShadow(QFrame::Raised);
@@ -76,9 +77,6 @@ public:
 "background-color: rgba(255, 255, 255,0%);"));
         label_2->setAlignment(Qt::AlignCenter);
         MainWindow->setCentralWidget(centralwidget);
-        frame->raise();
-        LogInB->raise();
-        SingInB->raise();
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
         menubar->setGeometry(QRect(0, 0, 800, 25));

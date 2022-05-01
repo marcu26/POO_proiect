@@ -1,4 +1,4 @@
-#include "singletonwo.h"
+#include "Singleton.h"
 
 
 Singleton* Singleton::instanta = nullptr;

@@ -1,9 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include <QHostAddress>
-#include <QDebug>
-#include <singletonwo.h>
-//class SingeltonWO;
+#include "Singleton.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -11,17 +8,6 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     this->centralWidget()->setStyleSheet(".QWidget{background-image:url( D:/ACl/AncientClient/Media/poza.png); background-position: center; }");
-  //  ui->frame->setAttribute(Qt::WA_TranslucentBackground,true);
-
-}
-
-void MainWindow::onReadyRead()
-{
-    QByteArray datas = socket.readAll();
-
-    qDebug() <<datas<<"\n";
-
-    QString answ = QString(datas);
 
 }
 
@@ -32,12 +18,9 @@ MainWindow::~MainWindow()
 
 
 
-
-
-
 void MainWindow::on_LogInB_clicked()
 {
-    Singleton::getInstance().showCW();
+    Singleton::getInstance().showLW();
     this->hide();
 }
 

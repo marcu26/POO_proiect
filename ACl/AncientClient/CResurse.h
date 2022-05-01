@@ -6,11 +6,14 @@
 #include "CSoldat.h"
 #include "CMuncitor.h"
 #include "CCavalerie.h"
+#include <QString>
 
 class CResurse
 {
 private:
-	std::vector<std::string> autorizatii;
+
+    int aMili=0;
+    int aMedic=0;
 	int galbeni;
 
 	CMuncitor worker;
@@ -20,15 +23,17 @@ private:
 
 	friend class CScoalaMilitar;
 	friend class CScoalaMedici;
+    friend class windowAdunare;
 public:
 	CResurse();
 
+    int getWorkers(){return worker.getNumber();};
 	int getGalbeni() { return galbeni; }
-	std::vector<std::string> getAutorizatii() { return autorizatii; }
 	void addGalbeni(const int& number) { galbeni += number; }
 	void subGalbeni(const int& number) { galbeni -= number; }
-	void addAutorizatie(const std::string& autor);
 	void addMuncitor();
+    void initResurse(QStringList& l);
+    QString getResourcesString();
 	
 	~CResurse() {}
 };

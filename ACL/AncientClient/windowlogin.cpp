@@ -1,52 +1,55 @@
-#include "singinwindow.h"
-#include "singletonwo.h"
-#include "ui_singinwindow.h"
+#include "windowlogin.h"
+#include "ui_windowlogin.h"
+#include "Singleton.h"
 
-
-SingInWindow::SingInWindow(QWidget *parent) :
+WindowLogIn::WindowLogIn(QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::SingInWindow)
+    ui(new Ui::WindowLogIn)
 {
     ui->setupUi(this);
-    ui->label_4->hide();
-    ui->label_5->hide();
+    ui->invalid->hide();
 }
 
-SingInWindow::~SingInWindow()
+WindowLogIn::~WindowLogIn()
 {
     delete ui;
 }
 
-void SingInWindow::on_pushButton_4_clicked()
+void WindowLogIn::on_BackB_clicked()
 {
     Singleton::getInstance().showMW();
-    ui->label_4->hide();
     this->hide();
 }
 
 
-void SingInWindow::on_pushButton_clicked()
+void WindowLogIn::on_finnishB_clicked()
 {
+
     if(!Singleton::getInstance().hasSpaces(ui->uName->text()) && (ui->uName->text().size()>=8))
     {
          if(!Singleton::getInstance().hasSpaces(ui->Pass->text()) && (ui->Pass->text().size()>=8))
          {
             QString str="1 "+ui->uName->text()+" "+ui->Pass->text();
             Singleton::getInstance().cl.sendInfoToServer(str);
-             ui->label_4->hide();
-             ui->label_5->show();
          }
          else
          {
-         ui->label_5->hide();
-         ui->label_4->show();
+         ui->invalid->show();
          }
     }
     else
     {
-    ui->label_5->hide();
-    ui->label_4->show();
+    ui->invalid->show();
     }
+}
 
+void WindowLogIn::allIsWrong()
+{
+    ui->invalid->show();
+}
+
+void WindowLogIn::allIsGood()
+{
+    this->hide();
 }
 

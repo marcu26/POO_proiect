@@ -3,6 +3,9 @@
 #include <QTcpSocket>
 #include <QDebug>
 #include <QHostAddress>
+#include "Singleton.h"
+#include <QRegularExpression>
+#include <QElapsedTimer>
 
 void CClient::buy(const int& cerere)
 {
@@ -14,7 +17,7 @@ void CClient::buy(const int& cerere)
 	{
 		if (resurse.getGalbeni() >= 100)
 		{
-			resurse.addAutorizatie("AutorizatieScoalaMilitara");
+            //resurse.addAutorizatie("AutorizatieScoalaMilitara");
 			resurse.subGalbeni(100);
 		}
 		else
@@ -24,7 +27,7 @@ void CClient::buy(const int& cerere)
 	{
 		if (resurse.getGalbeni() >= 100)
 		{
-			resurse.addAutorizatie("AutorizatieScoalaMedici");
+            //resurse.addAutorizatie("AutorizatieScoalaMedici");
 			resurse.subGalbeni(100);
 		}
 		else
@@ -58,6 +61,40 @@ void CClient::onReadyRead()
     qDebug() <<datas<<"\n";
 
     QString answ = QString(datas);
+
+    if(answ=="2 0")
+    {
+        Singleton::getInstance().sw.allIsWrong();
+    }
+
+    if(answ=="2 1")
+    {
+        Singleton::getInstance().sw.allIsGood();
+    }
+
+    if(answ=="1 0")
+    {
+        Singleton::getInstance().lw.allIsWrong();
+    }
+
+    if(answ=="1 1")
+    {
+        Singleton::getInstance().lw.allIsGood();
+    }
+
+    if(answ[0]=='6')
+    {
+        QStringList l = answ.split(QRegularExpression("\\W+"), Qt::SkipEmptyParts);
+
+        Singleton::getInstance().cl.resurse.initResurse(l);
+
+        Singleton::getInstance().showAW();
+
+
+    }
+
+
+
 }
 
 CClient::~CClient()
