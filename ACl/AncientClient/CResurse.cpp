@@ -18,9 +18,9 @@ void CResurse::initResurse(QStringList& l)
 {
     worker.setNumber(l.value(1).toInt());
     galbeni=l.value(2).toInt();
-    qDebug()<<galbeni;
     aMili=l.value(3).toInt();
     aMedic=l.value(4).toInt();
+    qDebug()<<aMedic;
     cav.setNumber(l.value(5).toInt());
     sold.setNumber(l.value(6).toInt());
     med.setNumber(l.value(7).toInt());

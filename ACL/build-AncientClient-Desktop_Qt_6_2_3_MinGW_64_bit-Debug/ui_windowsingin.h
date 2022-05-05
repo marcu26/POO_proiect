@@ -92,14 +92,24 @@ public:
         uName->setStyleSheet(QString::fromUtf8("color:rgb(255, 255, 255)"));
         finnishB = new QPushButton(WindowSingIn);
         finnishB->setObjectName(QString::fromUtf8("finnishB"));
-        finnishB->setGeometry(QRect(370, 390, 90, 35));
+        finnishB->setGeometry(QRect(360, 390, 100, 46));
         finnishB->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);\n"
-"background-color: rgba(0, 0, 0,80%);"));
+"background-color: rgba(0, 0, 0,80%);\n"
+"color: rgb(255, 255, 255);\n"
+"background-color: rgba(0, 0, 0,80%);\n"
+"border-style: solid;\n"
+"border-width: 2px;\n"
+"border-radius: 10px;"));
         BackB = new QPushButton(WindowSingIn);
         BackB->setObjectName(QString::fromUtf8("BackB"));
-        BackB->setGeometry(QRect(370, 450, 90, 35));
+        BackB->setGeometry(QRect(360, 460, 100, 45));
         BackB->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);\n"
-"background-color: rgba(0, 0, 0,80%);"));
+"background-color: rgba(0, 0, 0,80%);\n"
+"color: rgb(255, 255, 255);\n"
+"background-color: rgba(0, 0, 0,80%);\n"
+"border-style: solid;\n"
+"border-width: 2px;\n"
+"border-radius: 10px;"));
         invalid = new QLabel(WindowSingIn);
         invalid->setObjectName(QString::fromUtf8("invalid"));
         invalid->setEnabled(true);
@@ -116,7 +126,7 @@ public:
         widget = new QWidget(WindowSingIn);
         widget->setObjectName(QString::fromUtf8("widget"));
         widget->setGeometry(QRect(-90, -50, 900, 700));
-        widget->setStyleSheet(QString::fromUtf8("   .QWidget{background-image:url( C:/Users/marcu/Desktop/ACL/AncientClient/Media/poza.png); background-position: center; }"));
+        widget->setStyleSheet(QString::fromUtf8(""));
         widget->raise();
         succes->raise();
         frame->raise();

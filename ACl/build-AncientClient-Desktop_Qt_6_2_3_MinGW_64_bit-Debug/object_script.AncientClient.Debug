@@ -8,7 +8,6 @@ debug/CMuncitor.o
 debug/CResurse.o
 debug/CScoalaMedici.o
 debug/CScoalaMilitar.o
-debug/CShop.o
 debug/CSoldat.o
 debug/ICaracter.o
 debug/ICladire.o
@@ -19,10 +18,12 @@ debug/mainwindow.o
 debug/windowadunare.o
 debug/windowattack.o
 debug/windowlogin.o
+debug/windowshop.o
 debug/windowsingin.o
 debug/moc_CClient.o
 debug/moc_mainwindow.o
 debug/moc_windowadunare.o
 debug/moc_windowattack.o
 debug/moc_windowlogin.o
+debug/moc_windowshop.o
 debug/moc_windowsingin.o

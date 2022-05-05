@@ -53,3 +53,10 @@ void WindowLogIn::allIsGood()
     this->hide();
 }
 
+void WindowLogIn::changeStyleSheet()
+{
+    QString func;
+    func=".QWidget{background-image:url("+Singleton::getInstance().path+"/Media/poza.png); background-position: center; }";
+    this->ui->widget->setStyleSheet(func);
+}
+

@@ -8,7 +8,6 @@ release/CMuncitor.o
 release/CResurse.o
 release/CScoalaMedici.o
 release/CScoalaMilitar.o
-release/CShop.o
 release/CSoldat.o
 release/ICaracter.o
 release/ICladire.o
@@ -19,10 +18,12 @@ release/mainwindow.o
 release/windowadunare.o
 release/windowattack.o
 release/windowlogin.o
+release/windowshop.o
 release/windowsingin.o
 release/moc_CClient.o
 release/moc_mainwindow.o
 release/moc_windowadunare.o
 release/moc_windowattack.o
 release/moc_windowlogin.o
+release/moc_windowshop.o
 release/moc_windowsingin.o

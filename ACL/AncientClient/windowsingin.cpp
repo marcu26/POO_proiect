@@ -69,3 +69,10 @@ void WindowSingIn::allIsWrong()
     ui->invalid->show();
 }
 
+void WindowSingIn::changeStyleSheet()
+{
+    QString func;
+    func=".QWidget{background-image:url("+Singleton::getInstance().path+"/Media/poza.png); background-position: center; }";
+    this->ui->widget->setStyleSheet(func);
+}
+

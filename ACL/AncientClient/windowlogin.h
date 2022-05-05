@@ -26,6 +26,7 @@ private:
 public:
     void allIsGood();
     void allIsWrong();
+    void changeStyleSheet();
 };
 
 #endif // WINDOWLOGIN_H

@@ -34,6 +34,10 @@ public:
 	void addMuncitor();
     void initResurse(QStringList& l);
     QString getResourcesString();
+    int getMili(){return aMili;};
+    int getMedic(){return aMedic;};
+    void setMili(int n){aMili=n;};
+    void setMedic(int n){aMedic=n;};
 	
 	~CResurse() {}
 };

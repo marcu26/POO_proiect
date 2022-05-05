@@ -176,15 +176,20 @@ background-color: rgba(0, 0, 0, 0%);</string>
   <widget class="QPushButton" name="finnishB">
    <property name="geometry">
     <rect>
-     <x>370</x>
+     <x>360</x>
      <y>390</y>
-     <width>90</width>
-     <height>35</height>
+     <width>100</width>
+     <height>46</height>
     </rect>
    </property>
    <property name="styleSheet">
     <string notr="true">color: rgb(255, 255, 255);
-background-color: rgba(0, 0, 0,80%);</string>
+background-color: rgba(0, 0, 0,80%);
+color: rgb(255, 255, 255);
+background-color: rgba(0, 0, 0,80%);
+border-style: solid;
+border-width: 2px;
+border-radius: 10px;</string>
    </property>
    <property name="text">
     <string>Finnish</string>
@@ -193,15 +198,20 @@ background-color: rgba(0, 0, 0,80%);</string>
   <widget class="QPushButton" name="BackB">
    <property name="geometry">
     <rect>
-     <x>370</x>
-     <y>450</y>
-     <width>90</width>
-     <height>35</height>
+     <x>360</x>
+     <y>460</y>
+     <width>100</width>
+     <height>45</height>
     </rect>
    </property>
    <property name="styleSheet">
     <string notr="true">color: rgb(255, 255, 255);
-background-color: rgba(0, 0, 0,80%);</string>
+background-color: rgba(0, 0, 0,80%);
+color: rgb(255, 255, 255);
+background-color: rgba(0, 0, 0,80%);
+border-style: solid;
+border-width: 2px;
+border-radius: 10px;</string>
    </property>
    <property name="text">
     <string>Back</string>
@@ -260,7 +270,7 @@ background-color: rgba(0, 0, 0,60%);</string>
     </rect>
    </property>
    <property name="styleSheet">
-    <string notr="true">   .QWidget{background-image:url( C:/Users/marcu/Desktop/ACL/AncientClient/Media/poza.png); background-position: center; }</string>
+    <string notr="true"/>
    </property>
   </widget>
   <zorder>widget</zorder>

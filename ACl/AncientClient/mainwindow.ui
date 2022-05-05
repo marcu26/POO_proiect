@@ -30,14 +30,18 @@
     <property name="geometry">
      <rect>
       <x>210</x>
-      <y>390</y>
+      <y>450</y>
       <width>101</width>
-      <height>31</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">color: rgb(255, 255, 255);
-background-color: rgba(0, 0, 0,80%);</string>
+background-color: rgba(0, 0, 0,80%);
+border-style: solid;
+border-width: 2px;
+border-radius: 10px;
+</string>
     </property>
     <property name="text">
      <string>Autentificare</string>
@@ -47,14 +51,17 @@ background-color: rgba(0, 0, 0,80%);</string>
     <property name="geometry">
      <rect>
       <x>490</x>
-      <y>390</y>
+      <y>450</y>
       <width>101</width>
-      <height>31</height>
+      <height>41</height>
      </rect>
     </property>
     <property name="styleSheet">
      <string notr="true">color: rgb(255, 255, 255);
-background-color: rgba(0, 0, 0,80%);</string>
+background-color: rgba(0, 0, 0,80%);
+border-style: solid;
+border-width: 2px;
+border-radius: 10px;</string>
     </property>
     <property name="text">
      <string>Inregistrare</string>
@@ -70,7 +77,9 @@ background-color: rgba(0, 0, 0,80%);</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgba(0, 0, 0,60%);</string>
+     <string notr="true">color: rgb(255, 255, 255);
+background-color: rgba(0, 0, 0,60%);
+</string>
     </property>
     <property name="frameShape">
      <enum>QFrame::StyledPanel</enum>
@@ -128,6 +137,16 @@ background-color: rgba(255, 255, 255,0%);</string>
       <set>Qt::AlignCenter</set>
      </property>
     </widget>
+   </widget>
+   <widget class="QWidget" name="widget" native="true">
+    <property name="geometry">
+     <rect>
+      <x>280</x>
+      <y>190</y>
+      <width>211</width>
+      <height>221</height>
+     </rect>
+    </property>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">

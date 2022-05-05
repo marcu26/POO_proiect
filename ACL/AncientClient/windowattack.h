@@ -14,6 +14,7 @@ class windowAttack : public QDialog
 public:
     explicit windowAttack(QWidget *parent = nullptr);
     ~windowAttack();
+    void changeStyleSheet();
 
 private:
     Ui::windowAttack *ui;

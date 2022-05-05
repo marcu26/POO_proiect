@@ -30,6 +30,7 @@ public:
     QFrame *frame;
     QLabel *label;
     QLabel *label_2;
+    QWidget *widget;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -44,18 +45,27 @@ public:
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
         LogInB = new QPushButton(centralwidget);
         LogInB->setObjectName(QString::fromUtf8("LogInB"));
-        LogInB->setGeometry(QRect(210, 390, 101, 31));
+        LogInB->setGeometry(QRect(210, 450, 101, 41));
         LogInB->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);\n"
-"background-color: rgba(0, 0, 0,80%);"));
+"background-color: rgba(0, 0, 0,80%);\n"
+"border-style: solid;\n"
+"border-width: 2px;\n"
+"border-radius: 10px;\n"
+""));
         SingInB = new QPushButton(centralwidget);
         SingInB->setObjectName(QString::fromUtf8("SingInB"));
-        SingInB->setGeometry(QRect(490, 390, 101, 31));
+        SingInB->setGeometry(QRect(490, 450, 101, 41));
         SingInB->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);\n"
-"background-color: rgba(0, 0, 0,80%);"));
+"background-color: rgba(0, 0, 0,80%);\n"
+"border-style: solid;\n"
+"border-width: 2px;\n"
+"border-radius: 10px;"));
         frame = new QFrame(centralwidget);
         frame->setObjectName(QString::fromUtf8("frame"));
         frame->setGeometry(QRect(120, 30, 560, 120));
-        frame->setStyleSheet(QString::fromUtf8("background-color: rgba(0, 0, 0,60%);"));
+        frame->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);\n"
+"background-color: rgba(0, 0, 0,60%);\n"
+""));
         frame->setFrameShape(QFrame::StyledPanel);
         frame->setFrameShadow(QFrame::Raised);
         label = new QLabel(frame);
@@ -76,6 +86,9 @@ public:
         label_2->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);\n"
 "background-color: rgba(255, 255, 255,0%);"));
         label_2->setAlignment(Qt::AlignCenter);
+        widget = new QWidget(centralwidget);
+        widget->setObjectName(QString::fromUtf8("widget"));
+        widget->setGeometry(QRect(280, 190, 211, 221));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));

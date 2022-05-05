@@ -22,5 +22,7 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
+public:
+    void changeStyleSheet();
 };
 #endif // MAINWINDOW_H

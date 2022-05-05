@@ -5,13 +5,16 @@
 #include "windowsingin.h"
 #include "windowlogin.h"
 #include "windowadunare.h"
-#include <QElapsedTimer>
+#include "windowattack.h"
+#include "windowshop.h"
+#include <QApplication>
+
 
 class Singleton
 {
 private:
     static Singleton *instanta;
-    Singleton(){timer.start();};
+    Singleton();
     ~Singleton(){};
 
 friend class CClient;
@@ -25,6 +28,10 @@ private:
     WindowSingIn sw;
     WindowLogIn lw;
     windowAdunare aw;
+    windowAttack atw;
+    windowShop shw;
+    QString dusman;
+
 
 public:
     bool isAWvisible(){return aw.isV();};
@@ -32,12 +39,18 @@ public:
     void hideMW(){mw.hide();};
     void showSW(){sw.show();};
     void showLW(){lw.show();};
-    void showAW(){aw.setTexts(cl.resurse); aw.show();};
+    void showAW(){aw.setTexts(cl.resurse); aw.show();aw.showBuildings();};
+    void showATW(){atw.show();}
+    void showSHW(){shw.show();};
     bool hasSpaces(QString s);
     void setTexts(CResurse res){aw.setTexts(res);};
     void addandset(){cl.resurse.addGalbeni(cl.resurse.getWorkers());aw.setTexts(cl.resurse);};
     CClient cl;
-    QElapsedTimer timer;
+    QString path;
+    void connectToServer();
+    void setBG();
+    void setDusman(QString dusman){this->dusman=dusman;};
+    QString getDusman(){return dusman;};
 
 };
 

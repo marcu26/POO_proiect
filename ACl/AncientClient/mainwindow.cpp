@@ -7,7 +7,6 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    this->centralWidget()->setStyleSheet(".QWidget{background-image:url( D:/ACl/AncientClient/Media/poza.png); background-position: center; }");
 
 }
 
@@ -29,5 +28,14 @@ void MainWindow::on_SingInB_clicked()
 {
     Singleton::getInstance().showSW();
     this->hide();
+}
+
+void MainWindow::changeStyleSheet()
+{
+    QString func;
+    func=".QWidget{background-image:url("+Singleton::getInstance().path+"/Media/poza.png); background-position: center; }";
+    this->centralWidget()->setStyleSheet(func);
+    func=".QWidget{background-image:url("+Singleton::getInstance().path+"/Media/logo2.png); background-position: center; }";
+    this->ui->widget->setStyleSheet(func);
 }
 

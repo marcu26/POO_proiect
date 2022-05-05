@@ -30,5 +30,6 @@ public:
 	void sendChallange() {};
 	void processChallange() {};
     void sendInfoToServer(QString string);
+
 };
 

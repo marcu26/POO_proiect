@@ -1,0 +1,3 @@
+C:/Users/marcu/Desktop/ACL/AncientClient
+C:/Users/marcu/Desktop/ACL/AncientClient/Media
+C:/Users/marcu/Desktop/ACL/AncientClient/Config

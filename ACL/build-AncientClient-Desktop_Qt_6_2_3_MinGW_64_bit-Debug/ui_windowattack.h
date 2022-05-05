@@ -31,7 +31,7 @@ public:
         widget = new QWidget(windowAttack);
         widget->setObjectName(QString::fromUtf8("widget"));
         widget->setGeometry(QRect(0, 0, 800, 600));
-        widget->setStyleSheet(QString::fromUtf8("   .QWidget{background-image:url( C:/Users/marcu/Desktop/ACL/AncientClient/Media/poza3.jpg); background-position: center; }"));
+        widget->setStyleSheet(QString::fromUtf8(""));
 
         retranslateUi(windowAttack);
 

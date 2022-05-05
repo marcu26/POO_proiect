@@ -25,6 +25,7 @@ private:
 public:
     void allIsGood();
     void allIsWrong();
+    void changeStyleSheet();
 };
 
 #endif // WINDOWSINGIN_H

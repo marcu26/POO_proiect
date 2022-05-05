@@ -20,7 +20,6 @@ SOURCES += \
     CResurse.cpp \
     CScoalaMedici.cpp \
     CScoalaMilitar.cpp \
-    CShop.cpp \
     CSoldat.cpp \
     ICaracter.cpp \
     ICladire.cpp \
@@ -31,6 +30,7 @@ SOURCES += \
     windowadunare.cpp \
     windowattack.cpp \
     windowlogin.cpp \
+    windowshop.cpp \
     windowsingin.cpp
 
 HEADERS += \
@@ -44,7 +44,6 @@ HEADERS += \
     CResurse.h \
     CScoalaMedici.h \
     CScoalaMilitar.h \
-    CShop.h \
     CSoldat.h \
     ICaracter.h \
     ICladire.h \
@@ -54,6 +53,7 @@ HEADERS += \
     windowadunare.h \
     windowattack.h \
     windowlogin.h \
+    windowshop.h \
     windowsingin.h
 
 FORMS += \
@@ -61,6 +61,7 @@ FORMS += \
     windowadunare.ui \
     windowattack.ui \
     windowlogin.ui \
+    windowshop.ui \
     windowsingin.ui
 
 # Default rules for deployment.
