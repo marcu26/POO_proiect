@@ -15,7 +15,9 @@ SOURCES += \
         CClientList.cpp \
         SHA256.cpp \
         cdatabase.cpp \
+        cexception.cpp \
         clegatura.cpp \
+        clog.cpp \
         cserver.cpp \
         main.cpp
 
@@ -29,5 +31,8 @@ HEADERS += \
     CClientList.h \
     SHA256.h \
     cdatabase.h \
+    cexception.h \
     clegatura.h \
-    cserver.h
+    clog.h \
+    cserver.h \
+    iexception.h

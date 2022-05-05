@@ -1,5 +1,7 @@
 #include "CClient.h"
 #include "clegatura.h"
+#include "cexception.h"
+#include "clog.h"
 
 CClient::CClient(qintptr ID, QObject *parent)
     :QObject(parent)
@@ -34,7 +36,7 @@ void CClient::onReadyRead()
             registerUser(req);                      //cerere pt inregistrare (2 username pass)
 
         else if (req[0] == '3')
-            CLegatura::sendPlayersList(socket);   //trimite lista jucatorilor cu spatiu intre ei (3)
+            CLegatura::sendPlayersList(socket);   //trimite lista jucatorilor cu spatiu intre ei, inclusiv si userul care trimite requestul (3)
 
         else if (req[0] == '4')
             CLegatura::sendPlayersListWithoutUser(socket, socketDescriptor);  //trimite lista jucatorilor fara a se pune si pe el (4)
@@ -49,45 +51,65 @@ void CClient::onReadyRead()
             saveResource(req);              //salvez updateurile resurselor primite de la client, le primesc astfefl (7 x y z ...);
 
         else if(req[0]=='8')
-            setPauseForOpponent(req);       // (8 opponenName) (v-a trebui ca toma sa jucatorul sa retina numele oponentului)
+            setPauseForOpponent(req);       // (8 opponenName) (v-a trebui ca toma sa retina numele oponentului)
+
+        else if(req[0] == '9')
+            recieveChallengedAnswer(req);  //(9 playerName raspuns) //raspuns = 0 sau 1
+
+        else
+        {
+            throw new CException("Protocol nerecunoscut!",-7);
+        }
+
 }
 
 void CClient::felicita()
 {
+    socket->flush();
     socket->write("\n\n\n\n\n\n\n\nFelicitari!!!!!!!!!!!!!!!!!!");
 }
 
 void CClient::autentification(QString &req)             //VERIFICARE DACA NU ESTE DEJA CONECTAT
-{
-    database.connectDataBase(QString::number(socketDescriptor));
+{   
+    database.connectDataBase();
     QStringList l = req.split(QRegularExpression("\\W+"), Qt::SkipEmptyParts);
     qDebug() <<l.value(1)<<" --- "<<l.value(2)<<"\n";
 
-    if(database.verifyCredentials(l.value(1), l.value(2))==true)
+    if(database.verifyCredentials(l.value(1), l.value(2))==true && CLegatura::verfyConection(l.value(1))==0)
        {
         this->username = l.value(1);
-        socket->write("1 1");    //REUSIT
+        CLog::getInstance().PlayerLogIn("S-a autentificat utilizatorul: "+this->username);
+        socket->flush();
+        socket->write("1 1");                   //REUSIT
         transmitResource();
         }
     else
-        socket->write("1 0");    //ESUAT
+    {
+        CLog::getInstance().PlayerLogIn("Un utilizator a incercat sa se autentifice, dar nu credentialele nu au fost corecte");
+        socket->flush();
+        socket->write("1 0");                   //ESUAT
+    }
 }
 
 void CClient::registerUser(QString &req)
 {
-    database.connectDataBase(QString::number(socketDescriptor));
+    database.connectDataBase();
     QStringList l = req.split(QRegularExpression("\\W+"), Qt::SkipEmptyParts);
     qDebug() <<l.value(1)<<" --- "<<l.value(2)<<"\n";
 
     if(database.addUser(l.value(1),l.value(2))==-1)
     {
-        socket->write("2 0");               //ESUAT
+        socket->flush();
+        socket->write("2 0");                   //ESUAT
         qDebug () <<"Username Luat\n";
+        CLog::getInstance().PlayerRegister("S-a inregistrat un utilizator cu numele: "+l.value(1));
     }
     else
     {
-        this->username = l.value(1);
-        socket->write("2 1");              //REUSIT
+        //this->username = l.value(1);          -- nu trebuie sa ii dau username-ul pt ca nu se mai poate autentifica dupa
+        socket->flush();
+        socket->write("2 1");                   //REUSIT
+        CLog::getInstance().PlayerRegister("Un utilizator a incercat sa se inregistreze, dar username-ul era luat");
     }
 }
 
@@ -100,7 +122,7 @@ void CClient::duelRequest(QString req)
 
 void CClient::transmitResource()
 {
-    database.connectDataBase(QString::number(socketDescriptor));
+    database.connectDataBase();
     QString resources = "6 ";
     resources += database.getResources(this->username);
 
@@ -112,7 +134,7 @@ void CClient::saveResource(QString req)
 {
     QStringList l = req.split(QRegularExpression("\\W+"), Qt::SkipEmptyParts);
     
-    database.connectDataBase(QString::number(socketDescriptor));
+    database.connectDataBase();
 
     database.updateResources(l, this->username);
 }
@@ -124,9 +146,17 @@ void CClient::setPauseForOpponent(QString req)
     CLegatura::setPauseForOpponent(this->socket, l.value(1));
 }
 
+void CClient::recieveChallengedAnswer(QString answ)
+{
+    QStringList l = answ.split(QRegularExpression("\\W+"), Qt::SkipEmptyParts);
+
+    CLegatura::sendAnswearToChallenger(l.value(1),this->username ,l.value(2));
+}
+
 void CClient::onDisconnected()
 {
     qDebug() <<"S-a deconectat: "<<this->socketDescriptor<<"\n";
     active = 0;
+    CLog::getInstance().PlayerLogOut("Utilizatorul cu username-ul: "+this->username+" s-a deconectat");
     socket->deleteLater();
 }

@@ -56,7 +56,7 @@ QTcpSocket *CClientList::getPlayerSocket(QString username)
     return nullptr;
 }
 
-CClient* CClientList::getPlayerThread(QString username)
+CClient* CClientList::getPlayer(QString username)
 {
     for (auto& it : list)
     {
@@ -71,6 +71,7 @@ void CClientList::destroy()
     if(instance != nullptr)
     {
         delete instance;
+        instance = nullptr;
     }
 }
 

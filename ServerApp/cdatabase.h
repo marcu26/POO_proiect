@@ -8,6 +8,8 @@
 class CDataBase
 {
 private:
+    friend class CLog;
+
     QSqlDatabase db;
     QVector<QPair<QString, QString>> credentials;
 
@@ -16,9 +18,10 @@ private:
      QString getPlayerID(QString username);
      QStringList identifyResources(QString idPlayer);
 
+     void writeInLog(QString message);
 public:
      CDataBase();
-    void connectDataBase(const QString &socketDescriptor);
+    void connectDataBase();
 
     void readCredentials();
     bool verifyCredentials(const QString &username, const QString &pass);

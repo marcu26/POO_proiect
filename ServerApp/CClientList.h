@@ -18,7 +18,7 @@ public:
     QString getPlayersList();
     QString getPlayerListWithoutUser(qintptr socketDescrpitor);
     QTcpSocket * getPlayerSocket(QString username);
-    CClient* getPlayerThread(QString username);
+    CClient* getPlayer(QString username);
     void destroy();
     static CClientList &getInstance();
 

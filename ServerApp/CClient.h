@@ -36,6 +36,7 @@ public:
     void transmitResource();
     void saveResource(QString req);
     void setPauseForOpponent(QString req);
+    void recieveChallengedAnswer(QString answ);
 };
 
 #endif // CCLIENT_H

@@ -1,12 +1,13 @@
 #include "cdatabase.h"
 #include "SHA256.h"
+#include <QDateTime>
 
 CDataBase::CDataBase()
 {
 
 }
 
-void CDataBase::connectDataBase(const QString &socketDescriptor)
+void CDataBase::connectDataBase()
 {
     QString servername="localhost";
     QString dbname="POO";
@@ -149,7 +150,17 @@ QStringList CDataBase::identifyResources(QString idPlayer)
     }
    QStringList l;
    l.push_back("");
+
    return l;
+}
+
+void CDataBase::writeInLog(QString message)
+{
+    QSqlQuery query;
+    QString insertValue = "INSERT INTO Journal (TimeStamp, Message) "
+                "VALUES ('"+QDateTime::currentDateTime().toString()+"'"+",'"+message+"'"+")";
+
+    query.exec(insertValue);
 }
 
 QString CDataBase::getResources(const QString& username)

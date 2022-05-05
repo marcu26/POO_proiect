@@ -1,4 +1,5 @@
 #include "cserver.h"
+#include "cexception.h"
 
 CServer* CServer::instance = nullptr;
 
@@ -26,7 +27,7 @@ void CServer::startServer()
     }
     else
     {
-        qDebug() <<"Ancient Server PICAT \n";      //serverul nu poate receptiona conexiuni
+       throw new CException("Ancient Server Picat",-1);
     }
 }
 
