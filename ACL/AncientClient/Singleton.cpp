@@ -55,9 +55,12 @@ void Singleton::connectToServer()
 
 Singleton::Singleton()
 {
-    path=qApp->applicationDirPath();
-    path=path+"/../../AncientClient";
-    qDebug()<<path;
+
+}
+
+void Singleton::setPath(QString Path)
+{
+    this->path=Path;
 }
 
 void Singleton::setBG()

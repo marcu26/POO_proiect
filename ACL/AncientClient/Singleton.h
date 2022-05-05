@@ -51,6 +51,7 @@ public:
     void setBG();
     void setDusman(QString dusman){this->dusman=dusman;};
     QString getDusman(){return dusman;};
+    void setPath(QString Path);
 
 };
 
