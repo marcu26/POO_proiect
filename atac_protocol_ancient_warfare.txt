@@ -1,0 +1,17 @@
+9 playerName raspuns (raspuns este 0 sau 1)
+a opponentName <=> a nrSoldati nrCav nrMedici
+
+soldat = 10 hp
+cav = 10 hp
+medic = 10 hp
+
+soldat = 10 ap
+cav = 20 ap
+medic = vindeca un soldat/medic/cav
+
+b 1/2/3 oponent 1/2/3   	//primul numar se refera la trupa care ataca, al doilea numar la trupa pe care o ataca
+b nrSoldati nrCav nrMedici  //sa se adapteze trupele tale cand esti atacat
+
+1 = soldat
+2 = cav
+3 = medic
