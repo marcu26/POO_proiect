@@ -67,6 +67,20 @@ void CClient::onReadyRead()
         Singleton::getInstance().aw.aRefuzat();
     }
 
+    if(answ[0]=='9' && answ[2]=='1')
+      {
+          qDebug()<<answ;
+          this->sendInfoToServer("a "+Singleton::getInstance().getDusman());
+          Singleton::getInstance().showATW();
+          Singleton::getInstance().hideAW();
+      }
+
+    if(answ[0]=='a')
+    {
+        Singleton::getInstance().atw.setTextDusman(answ);
+    }
+
+
 
 
 }

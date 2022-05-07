@@ -6,8 +6,6 @@ release/CException.o
 release/CMedic.o
 release/CMuncitor.o
 release/CResurse.o
-release/CScoalaMedici.o
-release/CScoalaMilitar.o
 release/CSoldat.o
 release/ICaracter.o
 release/ICladire.o

@@ -35,7 +35,7 @@ void WindowSingIn::on_finnishB_clicked()
              if(ui->Pass_2->text()==ui->Pass->text())
              {
             QString str="2 "+ui->uName->text()+" "+ui->Pass->text();
-            Singleton::getInstance().cl.sendInfoToServer(str);
+            Singleton::getInstance().getCl().sendInfoToServer(str);
              }
              else
              {
@@ -72,7 +72,7 @@ void WindowSingIn::allIsWrong()
 void WindowSingIn::changeStyleSheet()
 {
     QString func;
-    func=".QWidget{background-image:url("+Singleton::getInstance().path+"/Media/poza.png); background-position: center; }";
+    func=".QWidget{background-image:url("+Singleton::getInstance().getPath()+"/Media/poza.png); background-position: center; }";
     this->ui->widget->setStyleSheet(func);
 }
 

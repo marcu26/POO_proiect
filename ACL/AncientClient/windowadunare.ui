@@ -429,23 +429,6 @@ background-color: rgba(0, 0, 0,80%);</string>
      <set>Qt::AlignCenter</set>
     </property>
    </widget>
-   <widget class="QListWidget" name="listWidget">
-    <property name="geometry">
-     <rect>
-      <x>500</x>
-      <y>70</y>
-      <width>261</width>
-      <height>361</height>
-     </rect>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">color: rgb(255, 255, 255);
-background-color: rgba(0, 0, 0,80%);
-border-style: solid;
-border-width: 2px;
-border-radius: 10px;</string>
-    </property>
-   </widget>
    <widget class="QFrame" name="provocare">
     <property name="geometry">
      <rect>
@@ -539,10 +522,27 @@ background-color: rgba(0, 0, 0,0%);</string>
 background-color: rgb(255, 0, 0);</string>
     </property>
     <property name="text">
-     <string>Jucatorul x v-a provocat la duel</string>
+     <string>Jucatorul x v-a refuzat duelul</string>
     </property>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
+   <widget class="QListWidget" name="listWidget">
+    <property name="geometry">
+     <rect>
+      <x>200</x>
+      <y>230</y>
+      <width>261</width>
+      <height>361</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);
+background-color: rgba(0, 0, 0,80%);
+border-style: solid;
+border-width: 2px;
+border-radius: 10px;</string>
     </property>
    </widget>
    <zorder>frame_2</zorder>
@@ -556,9 +556,9 @@ background-color: rgb(255, 0, 0);</string>
    <zorder>sold_2</zorder>
    <zorder>ScCav</zorder>
    <zorder>sold_3</zorder>
-   <zorder>listWidget</zorder>
    <zorder>provocare</zorder>
    <zorder>user_refuz</zorder>
+   <zorder>listWidget</zorder>
   </widget>
  </widget>
  <resources/>

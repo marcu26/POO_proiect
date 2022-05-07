@@ -7,8 +7,8 @@ class CClient:public QObject
 {
     Q_OBJECT
 
-     friend class Singelton;
-     friend class windowAdunare;
+
+
 private:
 
 
@@ -16,20 +16,18 @@ private:
 	std::string pass;
 
     QTcpSocket socket;
+    CResurse resurse;
 
 public slots:
     void onReadyRead();
 public:
-    CResurse resurse;
     CClient() {};
     virtual ~CClient();
 
-
+    CResurse &getResurse(){return resurse;};
     void connect_client(QString ip, int port);
-	void buy(const int& cerere);
-	void sendChallange() {};
-	void processChallange() {};
     void sendInfoToServer(QString string);
+    void clearSocket(){socket.flush();};
 
 };
 

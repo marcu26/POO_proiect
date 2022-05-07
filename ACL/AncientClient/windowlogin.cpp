@@ -30,7 +30,7 @@ void WindowLogIn::on_finnishB_clicked()
          if(!Singleton::getInstance().hasSpaces(ui->Pass->text()) && (ui->Pass->text().size()>=8))
          {
             QString str="1 "+ui->uName->text()+" "+ui->Pass->text();
-            Singleton::getInstance().cl.sendInfoToServer(str);
+            Singleton::getInstance().getCl().sendInfoToServer(str);
          }
          else
          {
@@ -56,7 +56,7 @@ void WindowLogIn::allIsGood()
 void WindowLogIn::changeStyleSheet()
 {
     QString func;
-    func=".QWidget{background-image:url("+Singleton::getInstance().path+"/Media/poza.png); background-position: center; }";
+    func=".QWidget{background-image:url("+Singleton::getInstance().getPath()+"/Media/poza.png); background-position: center; }";
     this->ui->widget->setStyleSheet(func);
 }
 

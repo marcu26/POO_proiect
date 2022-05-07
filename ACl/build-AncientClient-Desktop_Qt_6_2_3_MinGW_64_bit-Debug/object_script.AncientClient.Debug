@@ -6,8 +6,6 @@ debug/CException.o
 debug/CMedic.o
 debug/CMuncitor.o
 debug/CResurse.o
-debug/CScoalaMedici.o
-debug/CScoalaMilitar.o
 debug/CSoldat.o
 debug/ICaracter.o
 debug/ICladire.o

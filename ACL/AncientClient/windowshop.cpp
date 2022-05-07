@@ -22,15 +22,15 @@ void windowShop::on_Close_clicked()
 
 void windowShop::on_Provoaca_2_clicked()
 {
-    if(Singleton::getInstance().cl.resurse.getMedic()==0)
+    if(Singleton::getInstance().getCl().getResurse().getMedic()==0)
     {
 
-        if(Singleton::getInstance().cl.resurse.getGalbeni()>=100)
+        if(Singleton::getInstance().getCl().getResurse().getGalbeni()>=100)
         {
-        Singleton::getInstance().cl.resurse.setMedic(1);
-        Singleton::getInstance().cl.resurse.subGalbeni(100);
+        Singleton::getInstance().getCl().getResurse().setMedic(1);
+        Singleton::getInstance().getCl().getResurse().subGalbeni(100);
         Singleton::getInstance().showAW();
-        Singleton::getInstance().cl.sendInfoToServer(Singleton::getInstance().cl.resurse.getResourcesString());
+        Singleton::getInstance().getCl().sendInfoToServer(Singleton::getInstance().getCl().getResurse().getResourcesString());
         }
     }
 }
@@ -39,14 +39,14 @@ void windowShop::on_Provoaca_2_clicked()
 void windowShop::on_AutoMili_clicked()
 {
 
-    if(Singleton::getInstance().cl.resurse.getMili()==0)
+    if(Singleton::getInstance().getCl().getResurse().getMili()==0)
     {
-        if(Singleton::getInstance().cl.resurse.getGalbeni()>=100)
+        if(Singleton::getInstance().getCl().getResurse().getGalbeni()>=100)
         {
-        Singleton::getInstance().cl.resurse.setMili(1);
-        Singleton::getInstance().cl.resurse.subGalbeni(100);
+        Singleton::getInstance().getCl().getResurse().setMili(1);
+        Singleton::getInstance().getCl().getResurse().subGalbeni(100);
         Singleton::getInstance().showAW();
-        Singleton::getInstance().cl.sendInfoToServer(Singleton::getInstance().cl.resurse.getResourcesString());
+        Singleton::getInstance().getCl().sendInfoToServer(Singleton::getInstance().getCl().getResurse().getResourcesString());
         }
     }
 
@@ -56,12 +56,12 @@ void windowShop::on_AutoMili_clicked()
 void windowShop::on_Muncitori_clicked()
 {
 
-        if(Singleton::getInstance().cl.resurse.getGalbeni()>=20)
+        if(Singleton::getInstance().getCl().getResurse().getGalbeni()>=20)
         {
-            Singleton::getInstance().cl.resurse.subGalbeni(20);
-            Singleton::getInstance().cl.resurse.addMuncitor();
+            Singleton::getInstance().getCl().getResurse().subGalbeni(20);
+            Singleton::getInstance().getCl().getResurse().addMuncitor();
             Singleton::getInstance().showAW();
-            Singleton::getInstance().cl.sendInfoToServer(Singleton::getInstance().cl.resurse.getResourcesString());
+            Singleton::getInstance().getCl().sendInfoToServer(Singleton::getInstance().getCl().getResurse().getResourcesString());
 
         }
 }

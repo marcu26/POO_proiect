@@ -18,8 +18,6 @@ SOURCES += \
     CMedic.cpp \
     CMuncitor.cpp \
     CResurse.cpp \
-    CScoalaMedici.cpp \
-    CScoalaMilitar.cpp \
     CSoldat.cpp \
     ICaracter.cpp \
     ICladire.cpp \
@@ -42,8 +40,6 @@ HEADERS += \
     CMedic.h \
     CMuncitor.h \
     CResurse.h \
-    CScoalaMedici.h \
-    CScoalaMilitar.h \
     CSoldat.h \
     ICaracter.h \
     ICladire.h \

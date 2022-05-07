@@ -33,9 +33,9 @@ void MainWindow::on_SingInB_clicked()
 void MainWindow::changeStyleSheet()
 {
     QString func;
-    func=".QWidget{background-image:url("+Singleton::getInstance().path+"/Media/poza.png); background-position: center; }";
+    func=".QWidget{background-image:url("+Singleton::getInstance().getPath()+"/Media/poza.png); background-position: center; }";
     this->centralWidget()->setStyleSheet(func);
-    func=".QWidget{background-image:url("+Singleton::getInstance().path+"/Media/logo2.png); background-position: center; }";
+    func=".QWidget{background-image:url("+Singleton::getInstance().getPath()+"/Media/logo2.png); background-position: center; }";
     this->ui->widget->setStyleSheet(func);
 }
 

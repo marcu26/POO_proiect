@@ -15,6 +15,8 @@ public:
     explicit windowAttack(QWidget *parent = nullptr);
     ~windowAttack();
     void changeStyleSheet();
+    void setTexts();
+    void setTextDusman(QString s);
 
 private:
     Ui::windowAttack *ui;

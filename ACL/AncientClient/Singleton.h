@@ -30,28 +30,50 @@ private:
     windowAdunare aw;
     windowAttack atw;
     windowShop shw;
-    QString dusman;
+    QString dusman="dms";
+    bool turn;
+    CClient cl;
+    QString path;
 
 
 public:
-    bool isAWvisible(){return aw.isV();};
+
+    CClient &getCl(){return cl;};
+    QString getPath(){return path;};
+
+
+
+
+    bool isAWvisible(){return aw.isV();}; // verifica daca fereastra de adunare e vizibila pentru a mari banii clientului conectat
+
     void showMW(){mw.show();};
     void hideMW(){mw.hide();};
     void showSW(){sw.show();};
     void showLW(){lw.show();};
-    void showAW(){aw.setTexts(cl.resurse); aw.show();aw.showBuildings();};
-    void showATW(){atw.show();}
+    void showAW(){aw.setTexts(cl.getResurse()); aw.show();aw.showBuildings();};
+    void showATW(){atw.setTexts();atw.show();}
     void showSHW(){shw.show();};
-    bool hasSpaces(QString s);
-    void setTexts(CResurse res){aw.setTexts(res);};
-    void addandset(){cl.resurse.addGalbeni(cl.resurse.getWorkers());aw.setTexts(cl.resurse);};
-    CClient cl;
-    QString path;
+    void hideAW(){aw.hide();};
+
+    void setBG(); //seteaza stylesheet la ferestre
+
+    void setPath(QString Path);
+
+    bool hasSpaces(QString s); //verifica daca un string are spatii, util la username-uri si parole
+
+    void setTexts(CResurse res){aw.setTexts(res);}; //seteaza resursele clientului din informatiile primite de la server
+
+    void addandset(){cl.getResurse().addGalbeni(cl.getResurse().getWorkers());aw.setTexts(cl.getResurse());}; //aduna galbeni in fct de nr de munc o data la 2 secunde si face update la resurse
+
     void connectToServer();
-    void setBG();
+
     void setDusman(QString dusman){this->dusman=dusman;};
     QString getDusman(){return dusman;};
-    void setPath(QString Path);
+
+
+
+    void setTurn(bool turn){this->turn=turn;};
+    bool getTurn(){return turn;};
 
 };
 

@@ -45,12 +45,12 @@ public:
     QLabel *sold_2;
     QPushButton *ScCav;
     QLabel *sold_3;
-    QListWidget *listWidget;
     QFrame *provocare;
     QPushButton *Accept;
     QPushButton *Refuz;
     QLabel *user;
     QLabel *user_refuz;
+    QListWidget *listWidget;
 
     void setupUi(QDialog *windowAdunare)
     {
@@ -200,14 +200,6 @@ public:
         sold_3->setStyleSheet(QString::fromUtf8("color:rgb(255, 255, 255);\n"
 "background-color: rgba(0, 0, 0,80%);"));
         sold_3->setAlignment(Qt::AlignCenter);
-        listWidget = new QListWidget(widget);
-        listWidget->setObjectName(QString::fromUtf8("listWidget"));
-        listWidget->setGeometry(QRect(500, 70, 261, 361));
-        listWidget->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);\n"
-"background-color: rgba(0, 0, 0,80%);\n"
-"border-style: solid;\n"
-"border-width: 2px;\n"
-"border-radius: 10px;"));
         provocare = new QFrame(widget);
         provocare->setObjectName(QString::fromUtf8("provocare"));
         provocare->setGeometry(QRect(390, 110, 441, 201));
@@ -242,6 +234,14 @@ public:
         user_refuz->setStyleSheet(QString::fromUtf8("color:rgb(255, 255, 255);\n"
 "background-color: rgb(255, 0, 0);"));
         user_refuz->setAlignment(Qt::AlignCenter);
+        listWidget = new QListWidget(widget);
+        listWidget->setObjectName(QString::fromUtf8("listWidget"));
+        listWidget->setGeometry(QRect(200, 230, 261, 361));
+        listWidget->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);\n"
+"background-color: rgba(0, 0, 0,80%);\n"
+"border-style: solid;\n"
+"border-width: 2px;\n"
+"border-radius: 10px;"));
         frame_2->raise();
         frame->raise();
         LogInB->raise();
@@ -253,9 +253,9 @@ public:
         sold_2->raise();
         ScCav->raise();
         sold_3->raise();
-        listWidget->raise();
         provocare->raise();
         user_refuz->raise();
+        listWidget->raise();
 
         retranslateUi(windowAdunare);
 
@@ -285,7 +285,7 @@ public:
         Accept->setText(QCoreApplication::translate("windowAdunare", "Accept", nullptr));
         Refuz->setText(QCoreApplication::translate("windowAdunare", "Refuz", nullptr));
         user->setText(QCoreApplication::translate("windowAdunare", "Jucatorul x v-a provocat la duel", nullptr));
-        user_refuz->setText(QCoreApplication::translate("windowAdunare", "Jucatorul x v-a provocat la duel", nullptr));
+        user_refuz->setText(QCoreApplication::translate("windowAdunare", "Jucatorul x v-a refuzat duelul", nullptr));
     } // retranslateUi
 
 };

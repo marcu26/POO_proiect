@@ -21,9 +21,7 @@ private:
 	CCavalerie cav;
 	CMedic med;
 
-	friend class CScoalaMilitar;
-	friend class CScoalaMedici;
-    friend class windowAdunare;
+
 public:
 	CResurse();
 
@@ -32,13 +30,21 @@ public:
 	void addGalbeni(const int& number) { galbeni += number; }
 	void subGalbeni(const int& number) { galbeni -= number; }
 	void addMuncitor();
-    void initResurse(QStringList& l);
-    QString getResourcesString();
+
+    void initResurse(QStringList& l); //initializeaza resurse din informatii de la server, e o functie apelata pe informatii de la server
+    QString getResourcesString(); //creaza un string cu dataele pentru a fi trimise la server (7 + date in ordine), 7 de la protocol
+
     int getMili(){return aMili;};
     int getMedic(){return aMedic;};
     void setMili(int n){aMili=n;};
     void setMedic(int n){aMedic=n;};
-	
+
+    CMuncitor& getWorker(){return worker;};
+    CSoldat &getSold(){return sold;};
+    CCavalerie &getCav(){return cav;};
+    CMedic &getMed(){return med;};
+    void setGalbeni(int nr){galbeni=nr;};
+
 	~CResurse() {}
 };
 

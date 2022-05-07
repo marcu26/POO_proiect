@@ -38,6 +38,8 @@ private slots:
 
     void on_Refuz_clicked();
 
+    void on_Accept_clicked();
+
 private:
     Ui::windowAdunare *ui;
 public:

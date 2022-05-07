@@ -16,8 +16,5 @@ int main(int argc, char *argv[])
     Singleton::getInstance().showMW();
 
 
-
-
-
     return a.exec();
 }
