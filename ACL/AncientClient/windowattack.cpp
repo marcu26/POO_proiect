@@ -183,7 +183,8 @@ void windowAttack::on_SoldA_clicked()
     if(soldD>0){
     Singleton::getInstance().getCl().sendInfoToServer(act+QString::number(trupa)+" "+Singleton::getInstance().getDusman()+" 1");
     this->ui->FrameAtc->hide();
-    isMyTurn=0;}
+    isMyTurn=0;
+    this->ui->tura->setStyleSheet("background-color:rgb(85,0,0)");}
 }
 
 
@@ -192,7 +193,8 @@ void windowAttack::on_CavA_clicked()
     if(cavD>0){
     Singleton::getInstance().getCl().sendInfoToServer(act+QString::number(trupa)+" "+Singleton::getInstance().getDusman()+" 2");
     this->ui->FrameAtc->hide();
-    isMyTurn=0;}
+    isMyTurn=0;
+     this->ui->tura->setStyleSheet("background-color:rgb(85,0,0)");}
 }
 
 
@@ -201,6 +203,7 @@ void windowAttack::on_MedA_clicked()
     Singleton::getInstance().getCl().sendInfoToServer(act+QString::number(trupa)+" "+Singleton::getInstance().getDusman()+" 3");
     this->ui->FrameAtc->hide();
     isMyTurn=0;
+    this->ui->tura->setStyleSheet("background-color:rgb(85,0,0)");
 }
 
 void windowAttack::punePauza()
@@ -220,4 +223,9 @@ void windowAttack::endPause2()
 void windowAttack::makePauseAvalabile()
 {
     canPause=1;
+}
+
+void windowAttack::setTuraBox(QString s)
+{
+    this->ui->tura->setStyleSheet(s);
 }

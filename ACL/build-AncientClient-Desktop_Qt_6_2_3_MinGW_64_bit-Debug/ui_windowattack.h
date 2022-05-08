@@ -62,6 +62,8 @@ public:
     QPushButton *MedA;
     QPushButton *Cancel;
     QLabel *trupa;
+    QFrame *tura;
+    QLabel *label_2;
 
     void setupUi(QDialog *windowAttack)
     {
@@ -334,6 +336,18 @@ public:
         trupa->setStyleSheet(QString::fromUtf8("background-color: rgba(255, 255, 255,0%);\n"
 "color: rgb(255, 255, 255);"));
         trupa->setAlignment(Qt::AlignCenter);
+        tura = new QFrame(widget);
+        tura->setObjectName(QString::fromUtf8("tura"));
+        tura->setGeometry(QRect(730, 70, 31, 31));
+        tura->setStyleSheet(QString::fromUtf8("background-color: rgb(170, 0, 0);"));
+        tura->setFrameShape(QFrame::StyledPanel);
+        tura->setFrameShadow(QFrame::Raised);
+        label_2 = new QLabel(widget);
+        label_2->setObjectName(QString::fromUtf8("label_2"));
+        label_2->setGeometry(QRect(702, 40, 91, 20));
+        label_2->setStyleSheet(QString::fromUtf8("background-color: rgba(0, 0, 0,80%);\n"
+"color: rgb(255,255,255);"));
+        label_2->setAlignment(Qt::AlignCenter);
 
         retranslateUi(windowAttack);
 
@@ -376,6 +390,7 @@ public:
         MedA->setText(QCoreApplication::translate("windowAttack", "Medici", nullptr));
         Cancel->setText(QCoreApplication::translate("windowAttack", "Cancel", nullptr));
         trupa->setText(QCoreApplication::translate("windowAttack", "Folosesti ...", nullptr));
+        label_2->setText(QCoreApplication::translate("windowAttack", "Tura mea?", nullptr));
     } // retranslateUi
 
 };

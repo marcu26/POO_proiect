@@ -34,6 +34,7 @@ public:
     void makePauseAvalabile();
     void endPause();
     void setTurn(int t){this->isMyTurn=t;};
+    void setTuraBox(QString s);
     void setMyText(QString txt);
 
 

@@ -74,6 +74,7 @@ void CClient::onReadyRead()
           Singleton::getInstance().showATW();
           Singleton::getInstance().hideAW();
           Singleton::getInstance().atw.setTurn(1);
+          Singleton::getInstance().atw.setTuraBox("background-color:rgb(0,85,0)");
       }
 
     if(answ[0]=='a')
@@ -100,12 +101,14 @@ void CClient::onReadyRead()
     {
         Singleton::getInstance().atw.setMyText(answ);
         Singleton::getInstance().atw.setTurn(1);
+        Singleton::getInstance().atw.setTuraBox("background-color:rgb(0,85,0)");
     }
 
     if(answ[0]=='f') // o folosit ala medicii
     {
         Singleton::getInstance().atw.setTextDusman(answ);
         Singleton::getInstance().atw.setTurn(1);
+        Singleton::getInstance().atw.setTuraBox("background-color:rgb(0,85,0)");
     }
 
     if(answ[0]=='g') //folosesc medicii
