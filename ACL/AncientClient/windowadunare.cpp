@@ -5,10 +5,11 @@
 #include <QTimer>
 #include <QListWidgetItem>
 #include <QtDebug>
+
+
 void windowAdunare::addAndSet()
 {
     Singleton::getInstance().addandset();
-
 }
 
 
@@ -68,6 +69,8 @@ void windowAdunare::on_LogInB_clicked()
    this->ui->sold_3->hide();
    this->ui->provocare->hide();
    this->ui->Refuz->hide();
+   Singleton::getInstance().getCl().clearSocket();
+   Singleton::getInstance().getCl().sendInfoToServer("k");
 }
 
 bool windowAdunare::isV()
@@ -218,6 +221,12 @@ void windowAdunare::aRefuzat()
     this->ui->user_refuz->show();
 }
 
+void windowAdunare::setShowText(QString s)
+{
+    this->ui->user_refuz->setText(s);
+    this->ui->user_refuz->show();
+}
+
 
 void windowAdunare::on_Accept_clicked()
 {
@@ -226,6 +235,11 @@ void windowAdunare::on_Accept_clicked()
     this->hide();
     Singleton::getInstance().getCl().clearSocket();
     Singleton::getInstance().getCl().sendInfoToServer("a "+Singleton::getInstance().getDusman());
-    qDebug()<<"a "+Singleton::getInstance().getDusman();
+}
+
+void windowAdunare::hideThings()
+{
+    this->ui->user_refuz->hide();
+    this->ui->provocare->hide();
 }
 

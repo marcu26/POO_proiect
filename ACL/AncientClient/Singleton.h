@@ -31,7 +31,6 @@ private:
     windowAttack atw;
     windowShop shw;
     QString dusman="dms";
-    bool turn;
     CClient cl;
     QString path;
 
@@ -51,7 +50,7 @@ public:
     void showSW(){sw.show();};
     void showLW(){lw.show();};
     void showAW(){aw.setTexts(cl.getResurse()); aw.show();aw.showBuildings();};
-    void showATW(){atw.setTexts();atw.show();}
+    void showATW(){atw.setTexts();atw.show();aw.hideThings();} //setTexts = arata resursele tale in windowattack
     void showSHW(){shw.show();};
     void hideAW(){aw.hide();};
 
@@ -67,13 +66,11 @@ public:
 
     void connectToServer();
 
+
+
     void setDusman(QString dusman){this->dusman=dusman;};
     QString getDusman(){return dusman;};
 
-
-
-    void setTurn(bool turn){this->turn=turn;};
-    bool getTurn(){return turn;};
 
 };
 

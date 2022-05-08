@@ -41,11 +41,27 @@ public:
     QLabel *SoldF;
     QLabel *CavF;
     QLabel *MedF;
+    QLabel *dusman;
     QPushButton *Exit;
     QPushButton *Pause;
     QLabel *SoldLabel;
     QLabel *CavLabel;
     QLabel *MedLabel;
+    QFrame *ExitFrame;
+    QLabel *parasire;
+    QLabel *sigur;
+    QPushButton *Da;
+    QPushButton *Nu;
+    QFrame *pauseFr;
+    QPushButton *close;
+    QLabel *pauseL;
+    QFrame *FrameAtc;
+    QLabel *label;
+    QPushButton *SoldA;
+    QPushButton *CavA;
+    QPushButton *MedA;
+    QPushButton *Cancel;
+    QLabel *trupa;
 
     void setupUi(QDialog *windowAttack)
     {
@@ -110,7 +126,7 @@ public:
         Curent = new QFrame(widget);
         Curent->setObjectName(QString::fromUtf8("Curent"));
         Curent->setGeometry(QRect(300, 160, 211, 291));
-        Curent->setStyleSheet(QString::fromUtf8("background-color: rgba(0, 0, 0,80%);"));
+        Curent->setStyleSheet(QString::fromUtf8("background-color: rgba(0, 85, 0,80%);"));
         Curent->setFrameShape(QFrame::StyledPanel);
         Curent->setFrameShadow(QFrame::Raised);
         Curent_2 = new QLabel(Curent);
@@ -122,7 +138,7 @@ public:
         SoldC = new QLabel(Curent);
         SoldC->setObjectName(QString::fromUtf8("SoldC"));
         SoldC->setGeometry(QRect(20, 90, 191, 20));
-        SoldC->setStyleSheet(QString::fromUtf8("background-color: rgba(255, 255, 255,0%);\n"
+        SoldC->setStyleSheet(QString::fromUtf8("background-color: rgba(0, 0 0,0%);\n"
 "color:rgb(255,255,255);"));
         SoldC->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
         CavC = new QLabel(Curent);
@@ -140,7 +156,7 @@ public:
         Final = new QFrame(widget);
         Final->setObjectName(QString::fromUtf8("Final"));
         Final->setGeometry(QRect(540, 160, 211, 291));
-        Final->setStyleSheet(QString::fromUtf8("background-color: rgba(0, 0, 0,80%);"));
+        Final->setStyleSheet(QString::fromUtf8("background-color: rgba(85, 0, 0,80%);"));
         Final->setFrameShape(QFrame::StyledPanel);
         Final->setFrameShadow(QFrame::Raised);
         Final_2 = new QLabel(Final);
@@ -167,6 +183,12 @@ public:
         MedF->setStyleSheet(QString::fromUtf8("background-color: rgba(255, 255, 255,0%);\n"
 "color:rgb(255,255,255);"));
         MedF->setAlignment(Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter);
+        dusman = new QLabel(Final);
+        dusman->setObjectName(QString::fromUtf8("dusman"));
+        dusman->setGeometry(QRect(0, 40, 211, 20));
+        dusman->setStyleSheet(QString::fromUtf8("background-color: rgba(255, 255, 255,0%);\n"
+"color:rgb(255,255,255);"));
+        dusman->setAlignment(Qt::AlignCenter);
         Exit = new QPushButton(widget);
         Exit->setObjectName(QString::fromUtf8("Exit"));
         Exit->setGeometry(QRect(660, 510, 91, 41));
@@ -201,6 +223,117 @@ public:
         MedLabel->setStyleSheet(QString::fromUtf8("background-color: rgba(0,0, 0, 50%);\n"
 "color: rgb(255, 255, 255);"));
         MedLabel->setAlignment(Qt::AlignCenter);
+        ExitFrame = new QFrame(widget);
+        ExitFrame->setObjectName(QString::fromUtf8("ExitFrame"));
+        ExitFrame->setGeometry(QRect(320, 310, 281, 161));
+        ExitFrame->setStyleSheet(QString::fromUtf8("background-color: rgba(0, 0, 0,90%);"));
+        ExitFrame->setFrameShape(QFrame::StyledPanel);
+        ExitFrame->setFrameShadow(QFrame::Raised);
+        parasire = new QLabel(ExitFrame);
+        parasire->setObjectName(QString::fromUtf8("parasire"));
+        parasire->setGeometry(QRect(0, 10, 281, 31));
+        parasire->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);\n"
+"background-color: rgba(255, 255, 255,0%);"));
+        parasire->setAlignment(Qt::AlignCenter);
+        sigur = new QLabel(ExitFrame);
+        sigur->setObjectName(QString::fromUtf8("sigur"));
+        sigur->setGeometry(QRect(0, 40, 281, 31));
+        sigur->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);\n"
+"background-color: rgba(255, 255, 255,0%);"));
+        sigur->setAlignment(Qt::AlignCenter);
+        Da = new QPushButton(ExitFrame);
+        Da->setObjectName(QString::fromUtf8("Da"));
+        Da->setGeometry(QRect(20, 100, 91, 41));
+        Da->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);\n"
+"background-color: rgba(0, 0, 0,80%);\n"
+"border-style: solid;\n"
+"border-width: 2px;\n"
+"border-radius: 10px;"));
+        Nu = new QPushButton(ExitFrame);
+        Nu->setObjectName(QString::fromUtf8("Nu"));
+        Nu->setGeometry(QRect(170, 100, 91, 41));
+        Nu->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);\n"
+"background-color: rgba(0, 0, 0,80%);\n"
+"border-style: solid;\n"
+"border-width: 2px;\n"
+"border-radius: 10px;"));
+        sigur->raise();
+        Da->raise();
+        Nu->raise();
+        parasire->raise();
+        pauseFr = new QFrame(widget);
+        pauseFr->setObjectName(QString::fromUtf8("pauseFr"));
+        pauseFr->setGeometry(QRect(0, 0, 810, 610));
+        pauseFr->setStyleSheet(QString::fromUtf8("background-color: rgba( 0, 0,0,90%);"));
+        pauseFr->setFrameShape(QFrame::StyledPanel);
+        pauseFr->setFrameShadow(QFrame::Raised);
+        close = new QPushButton(pauseFr);
+        close->setObjectName(QString::fromUtf8("close"));
+        close->setGeometry(QRect(360, 470, 91, 41));
+        close->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);\n"
+"background-color: rgba(0, 0, 0,80%);\n"
+"border-style: solid;\n"
+"border-width: 2px;\n"
+"border-radius: 10px;"));
+        pauseL = new QLabel(pauseFr);
+        pauseL->setObjectName(QString::fromUtf8("pauseL"));
+        pauseL->setGeometry(QRect(220, 70, 371, 41));
+        QFont font2;
+        font2.setPointSize(18);
+        pauseL->setFont(font2);
+        pauseL->setStyleSheet(QString::fromUtf8("background-color: rgb(255, 255, 255,0);\n"
+"color: rgb(255, 255, 255);"));
+        pauseL->setAlignment(Qt::AlignCenter);
+        FrameAtc = new QFrame(widget);
+        FrameAtc->setObjectName(QString::fromUtf8("FrameAtc"));
+        FrameAtc->setGeometry(QRect(10, 0, 511, 241));
+        FrameAtc->setStyleSheet(QString::fromUtf8("background-color: rgba(0, 0, 0,70%);"));
+        FrameAtc->setFrameShape(QFrame::StyledPanel);
+        FrameAtc->setFrameShadow(QFrame::Raised);
+        label = new QLabel(FrameAtc);
+        label->setObjectName(QString::fromUtf8("label"));
+        label->setGeometry(QRect(0, 10, 531, 31));
+        label->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);\n"
+"background-color: rgb(0, 0, 0,0%);"));
+        label->setAlignment(Qt::AlignCenter);
+        SoldA = new QPushButton(FrameAtc);
+        SoldA->setObjectName(QString::fromUtf8("SoldA"));
+        SoldA->setGeometry(QRect(60, 120, 91, 41));
+        SoldA->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);\n"
+"background-color: rgba(0, 0, 0,80%);\n"
+"border-style: solid;\n"
+"border-width: 2px;\n"
+"border-radius: 10px;"));
+        CavA = new QPushButton(FrameAtc);
+        CavA->setObjectName(QString::fromUtf8("CavA"));
+        CavA->setGeometry(QRect(210, 120, 91, 41));
+        CavA->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);\n"
+"background-color: rgba(0, 0, 0,80%);\n"
+"border-style: solid;\n"
+"border-width: 2px;\n"
+"border-radius: 10px;"));
+        MedA = new QPushButton(FrameAtc);
+        MedA->setObjectName(QString::fromUtf8("MedA"));
+        MedA->setGeometry(QRect(360, 120, 91, 41));
+        MedA->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);\n"
+"background-color: rgba(0, 0, 0,80%);\n"
+"border-style: solid;\n"
+"border-width: 2px;\n"
+"border-radius: 10px;"));
+        Cancel = new QPushButton(FrameAtc);
+        Cancel->setObjectName(QString::fromUtf8("Cancel"));
+        Cancel->setGeometry(QRect(400, 180, 91, 41));
+        Cancel->setStyleSheet(QString::fromUtf8("color: rgb(255, 255, 255);\n"
+"background-color: rgba(0, 0, 0,80%);\n"
+"border-style: solid;\n"
+"border-width: 2px;\n"
+"border-radius: 10px;"));
+        trupa = new QLabel(FrameAtc);
+        trupa->setObjectName(QString::fromUtf8("trupa"));
+        trupa->setGeometry(QRect(0, 60, 511, 31));
+        trupa->setStyleSheet(QString::fromUtf8("background-color: rgba(255, 255, 255,0%);\n"
+"color: rgb(255, 255, 255);"));
+        trupa->setAlignment(Qt::AlignCenter);
 
         retranslateUi(windowAttack);
 
@@ -225,11 +358,24 @@ public:
         SoldF->setText(QCoreApplication::translate("windowAttack", "Soldati: 0", nullptr));
         CavF->setText(QCoreApplication::translate("windowAttack", "Cavalerie: 0", nullptr));
         MedF->setText(QCoreApplication::translate("windowAttack", "Medici: 0", nullptr));
+        dusman->setText(QCoreApplication::translate("windowAttack", "dusman", nullptr));
         Exit->setText(QCoreApplication::translate("windowAttack", "Exit", nullptr));
         Pause->setText(QCoreApplication::translate("windowAttack", "Pause", nullptr));
         SoldLabel->setText(QCoreApplication::translate("windowAttack", "Soldati", nullptr));
         CavLabel->setText(QCoreApplication::translate("windowAttack", "Cavalerie", nullptr));
         MedLabel->setText(QCoreApplication::translate("windowAttack", "Medici", nullptr));
+        parasire->setText(QCoreApplication::translate("windowAttack", "Parasirea duelului va duce la infrangere", nullptr));
+        sigur->setText(QCoreApplication::translate("windowAttack", "Esti sigur ca doresti sa iesi?", nullptr));
+        Da->setText(QCoreApplication::translate("windowAttack", "Da", nullptr));
+        Nu->setText(QCoreApplication::translate("windowAttack", "Nu", nullptr));
+        close->setText(QCoreApplication::translate("windowAttack", "Close", nullptr));
+        pauseL->setText(QCoreApplication::translate("windowAttack", "Pauza", nullptr));
+        label->setText(QCoreApplication::translate("windowAttack", "Asupra carei unitati doresti sa actionezi?", nullptr));
+        SoldA->setText(QCoreApplication::translate("windowAttack", "Soldati", nullptr));
+        CavA->setText(QCoreApplication::translate("windowAttack", "Cavalerie", nullptr));
+        MedA->setText(QCoreApplication::translate("windowAttack", "Medici", nullptr));
+        Cancel->setText(QCoreApplication::translate("windowAttack", "Cancel", nullptr));
+        trupa->setText(QCoreApplication::translate("windowAttack", "Folosesti ...", nullptr));
     } // retranslateUi
 
 };

@@ -34,3 +34,8 @@ QString CResurse::getResourcesString()
 
     return str;
 }
+
+void CResurse::subLose()
+{
+
+}

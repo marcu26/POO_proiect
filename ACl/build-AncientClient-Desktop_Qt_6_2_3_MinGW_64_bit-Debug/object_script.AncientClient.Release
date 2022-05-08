@@ -1,5 +1,4 @@
 release/ACaracter.o
-release/ACladire.o
 release/CCavalerie.o
 release/CClient.o
 release/CException.o
@@ -8,7 +7,6 @@ release/CMuncitor.o
 release/CResurse.o
 release/CSoldat.o
 release/ICaracter.o
-release/ICladire.o
 release/IException.o
 release/Singleton.o
 release/main.o

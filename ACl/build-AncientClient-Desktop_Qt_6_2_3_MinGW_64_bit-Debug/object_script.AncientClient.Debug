@@ -1,5 +1,4 @@
 debug/ACaracter.o
-debug/ACladire.o
 debug/CCavalerie.o
 debug/CClient.o
 debug/CException.o
@@ -8,7 +7,6 @@ debug/CMuncitor.o
 debug/CResurse.o
 debug/CSoldat.o
 debug/ICaracter.o
-debug/ICladire.o
 debug/IException.o
 debug/Singleton.o
 debug/main.o

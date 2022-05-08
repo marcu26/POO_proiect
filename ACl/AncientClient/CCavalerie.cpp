@@ -2,5 +2,5 @@
 
 void CCavalerie::doAction(ICaracter* caracter)
 {
-	caracter->modifyNumber(2*(-this->getNumber()));
+    caracter->modifyNumber(2*(-this->getNumber()));
 }

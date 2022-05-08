@@ -317,6 +317,7 @@ Makefile: ../AncientClient/AncientClient.pro F:/Qt/6.2.3/mingw_64/mkspecs/win32-
 		F:/Qt/6.2.3/mingw_64/mkspecs/features/yacc.prf \
 		F:/Qt/6.2.3/mingw_64/mkspecs/features/lex.prf \
 		../AncientClient/AncientClient.pro \
+		F:/Qt/6.2.3/mingw_64/lib/Qt6Multimedia.prl \
 		F:/Qt/6.2.3/mingw_64/lib/Qt6Widgets.prl \
 		F:/Qt/6.2.3/mingw_64/lib/Qt6Gui.prl \
 		F:/Qt/6.2.3/mingw_64/lib/Qt6Network.prl \
@@ -571,6 +572,7 @@ F:/Qt/6.2.3/mingw_64/mkspecs/features/exceptions.prf:
 F:/Qt/6.2.3/mingw_64/mkspecs/features/yacc.prf:
 F:/Qt/6.2.3/mingw_64/mkspecs/features/lex.prf:
 ../AncientClient/AncientClient.pro:
+F:/Qt/6.2.3/mingw_64/lib/Qt6Multimedia.prl:
 F:/Qt/6.2.3/mingw_64/lib/Qt6Widgets.prl:
 F:/Qt/6.2.3/mingw_64/lib/Qt6Gui.prl:
 F:/Qt/6.2.3/mingw_64/lib/Qt6Network.prl:

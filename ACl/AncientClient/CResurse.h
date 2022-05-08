@@ -30,6 +30,8 @@ public:
 	void addGalbeni(const int& number) { galbeni += number; }
 	void subGalbeni(const int& number) { galbeni -= number; }
 	void addMuncitor();
+    void subLose();
+
 
     void initResurse(QStringList& l); //initializeaza resurse din informatii de la server, e o functie apelata pe informatii de la server
     QString getResourcesString(); //creaza un string cu dataele pentru a fi trimise la server (7 + date in ordine), 7 de la protocol

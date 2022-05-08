@@ -205,7 +205,7 @@ color:rgb(255,255,255);</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgba(0, 0, 0,80%);</string>
+     <string notr="true">background-color: rgba(0, 85, 0,80%);</string>
     </property>
     <property name="frameShape">
      <enum>QFrame::StyledPanel</enum>
@@ -243,7 +243,7 @@ color:rgb(255,255,255);</string>
       </rect>
      </property>
      <property name="styleSheet">
-      <string notr="true">background-color: rgba(255, 255, 255,0%);
+      <string notr="true">background-color: rgba(0, 0 0,0%);
 color:rgb(255,255,255);</string>
      </property>
      <property name="text">
@@ -304,7 +304,7 @@ color:rgb(255,255,255);</string>
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgba(0, 0, 0,80%);</string>
+     <string notr="true">background-color: rgba(85, 0, 0,80%);</string>
     </property>
     <property name="frameShape">
      <enum>QFrame::StyledPanel</enum>
@@ -390,6 +390,26 @@ color:rgb(255,255,255);</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="dusman">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>40</y>
+       <width>211</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgba(255, 255, 255,0%);
+color:rgb(255,255,255);</string>
+     </property>
+     <property name="text">
+      <string>dusman</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
      </property>
     </widget>
    </widget>
@@ -492,6 +512,312 @@ color: rgb(255, 255, 255);</string>
     <property name="alignment">
      <set>Qt::AlignCenter</set>
     </property>
+   </widget>
+   <widget class="QFrame" name="ExitFrame">
+    <property name="geometry">
+     <rect>
+      <x>320</x>
+      <y>310</y>
+      <width>281</width>
+      <height>161</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0, 0, 0,90%);</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QLabel" name="parasire">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>10</y>
+       <width>281</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(255, 255, 255);
+background-color: rgba(255, 255, 255,0%);</string>
+     </property>
+     <property name="text">
+      <string>Parasirea duelului va duce la infrangere</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QLabel" name="sigur">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>40</y>
+       <width>281</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(255, 255, 255);
+background-color: rgba(255, 255, 255,0%);</string>
+     </property>
+     <property name="text">
+      <string>Esti sigur ca doresti sa iesi?</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="Da">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>100</y>
+       <width>91</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(255, 255, 255);
+background-color: rgba(0, 0, 0,80%);
+border-style: solid;
+border-width: 2px;
+border-radius: 10px;</string>
+     </property>
+     <property name="text">
+      <string>Da</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="Nu">
+     <property name="geometry">
+      <rect>
+       <x>170</x>
+       <y>100</y>
+       <width>91</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(255, 255, 255);
+background-color: rgba(0, 0, 0,80%);
+border-style: solid;
+border-width: 2px;
+border-radius: 10px;</string>
+     </property>
+     <property name="text">
+      <string>Nu</string>
+     </property>
+    </widget>
+    <zorder>sigur</zorder>
+    <zorder>Da</zorder>
+    <zorder>Nu</zorder>
+    <zorder>parasire</zorder>
+   </widget>
+   <widget class="QFrame" name="pauseFr">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>0</y>
+      <width>810</width>
+      <height>610</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba( 0, 0,0,90%);</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QPushButton" name="close">
+     <property name="geometry">
+      <rect>
+       <x>360</x>
+       <y>470</y>
+       <width>91</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(255, 255, 255);
+background-color: rgba(0, 0, 0,80%);
+border-style: solid;
+border-width: 2px;
+border-radius: 10px;</string>
+     </property>
+     <property name="text">
+      <string>Close</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="pauseL">
+     <property name="geometry">
+      <rect>
+       <x>220</x>
+       <y>70</y>
+       <width>371</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>18</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgb(255, 255, 255,0);
+color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string>Pauza</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </widget>
+   <widget class="QFrame" name="FrameAtc">
+    <property name="geometry">
+     <rect>
+      <x>10</x>
+      <y>0</y>
+      <width>511</width>
+      <height>241</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgba(0, 0, 0,70%);</string>
+    </property>
+    <property name="frameShape">
+     <enum>QFrame::StyledPanel</enum>
+    </property>
+    <property name="frameShadow">
+     <enum>QFrame::Raised</enum>
+    </property>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>10</y>
+       <width>531</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(255, 255, 255);
+background-color: rgb(0, 0, 0,0%);</string>
+     </property>
+     <property name="text">
+      <string>Asupra carei unitati doresti sa actionezi?</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="SoldA">
+     <property name="geometry">
+      <rect>
+       <x>60</x>
+       <y>120</y>
+       <width>91</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(255, 255, 255);
+background-color: rgba(0, 0, 0,80%);
+border-style: solid;
+border-width: 2px;
+border-radius: 10px;</string>
+     </property>
+     <property name="text">
+      <string>Soldati</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="CavA">
+     <property name="geometry">
+      <rect>
+       <x>210</x>
+       <y>120</y>
+       <width>91</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(255, 255, 255);
+background-color: rgba(0, 0, 0,80%);
+border-style: solid;
+border-width: 2px;
+border-radius: 10px;</string>
+     </property>
+     <property name="text">
+      <string>Cavalerie</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="MedA">
+     <property name="geometry">
+      <rect>
+       <x>360</x>
+       <y>120</y>
+       <width>91</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(255, 255, 255);
+background-color: rgba(0, 0, 0,80%);
+border-style: solid;
+border-width: 2px;
+border-radius: 10px;</string>
+     </property>
+     <property name="text">
+      <string>Medici</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="Cancel">
+     <property name="geometry">
+      <rect>
+       <x>400</x>
+       <y>180</y>
+       <width>91</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(255, 255, 255);
+background-color: rgba(0, 0, 0,80%);
+border-style: solid;
+border-width: 2px;
+border-radius: 10px;</string>
+     </property>
+     <property name="text">
+      <string>Cancel</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="trupa">
+     <property name="geometry">
+      <rect>
+       <x>0</x>
+       <y>60</y>
+       <width>511</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">background-color: rgba(255, 255, 255,0%);
+color: rgb(255, 255, 255);</string>
+     </property>
+     <property name="text">
+      <string>Folosesti ...</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
    </widget>
   </widget>
  </widget>

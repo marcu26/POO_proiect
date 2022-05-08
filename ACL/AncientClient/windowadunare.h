@@ -5,6 +5,7 @@
 #include <QDialog>
 #include <QListWidgetItem>
 
+
 namespace Ui {
 class windowAdunare;
 }
@@ -13,11 +14,14 @@ class windowAdunare : public QDialog
 {
     Q_OBJECT
 
+private:
+
 public:
     explicit windowAdunare(QWidget *parent = nullptr);
     ~windowAdunare();
     void setTexts(CResurse res);
     static void addAndSet();
+    void setShowText(QString s);
 
 private slots:
     void on_LogInB_clicked();
@@ -49,6 +53,7 @@ public:
     void setPlayers(QString s);
     void maProvoci(QString s);
     void aRefuzat();
+    void hideThings();
 };
 
 #endif // WINDOWADUNARE_H

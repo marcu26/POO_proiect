@@ -1,5 +1,6 @@
 QT       += core gui
 QT       += network
+QT       += multimedia
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -11,7 +12,6 @@ CONFIG += c++11
 
 SOURCES += \
     ACaracter.cpp \
-    ACladire.cpp \
     CCavalerie.cpp \
     CClient.cpp \
     CException.cpp \
@@ -20,7 +20,6 @@ SOURCES += \
     CResurse.cpp \
     CSoldat.cpp \
     ICaracter.cpp \
-    ICladire.cpp \
     IException.cpp \
     Singleton.cpp \
     main.cpp \
@@ -33,7 +32,6 @@ SOURCES += \
 
 HEADERS += \
     ACaracter.h \
-    ACladire.h \
     CCavalerie.h \
     CClient.h \
     CException.h \
@@ -42,7 +40,6 @@ HEADERS += \
     CResurse.h \
     CSoldat.h \
     ICaracter.h \
-    ICladire.h \
     IException.h \
     Singleton.h \
     mainwindow.h \
