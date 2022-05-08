@@ -15,6 +15,9 @@ public:
 
     void addClient(CClient * client);
     void eraseInactivePointer();
+    void setOnInArena(QString playerName);
+    void setOffInArena(QString playerName);
+    bool getPlayerInArena(QString playerName);
     QString getPlayersList();
     QString getPlayerListWithoutUser(qintptr socketDescrpitor);
     QTcpSocket * getPlayerSocket(QString username);

@@ -17,6 +17,7 @@ private:
     QString username = " ";
     CDataBase database;
     bool active;            //verifica activitatea clientului (daca mai este conectat sau nu)
+    bool inArena;
 
 public slots:
     void onReadyRead();
@@ -39,6 +40,12 @@ public:
     void recieveChallengedAnswer(QString answ);
     void sendOpponentArmy(QString req);
     void manageAttack(QString req);
+    void endPauseForOpponent(QString req);
+    void manageHeal(QString req);
+    void manageLoseMasaVerde(QString req);
+    void deleteName();
+    bool getInArena() {return inArena;}
+    void setInArena(const bool &a) {inArena = a;}
 };
 
 #endif // CCLIENT_H

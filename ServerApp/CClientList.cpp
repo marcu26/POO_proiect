@@ -17,6 +17,33 @@ void CClientList::eraseInactivePointer()
             list.end());
 }
 
+void CClientList::setOnInArena(QString playerName)
+{
+    for(auto &it:list)
+    {
+        if(it->getUsername() == playerName)
+            it->setInArena(1);
+    }
+}
+
+void CClientList::setOffInArena(QString playerName)
+{
+    for(auto &it:list)
+    {
+        if(it->getUsername() == playerName)
+            it->setInArena(0);
+    }
+}
+
+bool CClientList::getPlayerInArena(QString playerName)
+{
+    for(auto &it:list)
+    {
+        if(it->getUsername() == playerName)
+            return it->getInArena();
+    }
+}
+
 QString CClientList::getPlayersList()
 {
     QString players="";
@@ -36,7 +63,7 @@ QString CClientList::getPlayerListWithoutUser(qintptr socketDescrpitor)
 
     for(auto &it:list)
     {
-       if(it->getSocketDescriptor()!=socketDescrpitor)
+       if(it->getSocketDescriptor()!=socketDescrpitor && it->getUsername()!="" && it->getInArena()==0)
        {
            players+= it->getUsername();
            players+=' ';

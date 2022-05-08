@@ -9,8 +9,21 @@ soldat = 10 ap
 cav = 20 ap
 medic = vindeca un soldat/medic/cav
 
-b 1/2/3 oponent 1/2/3   	//primul numar se refera la trupa care ataca, al doilea numar la trupa pe care o ataca
-b nrSoldati nrCav nrMedici  //sa se adapteze trupele tale cand esti atacat
+b 1/2 oponent 1/2/3   	//primul numar se refera la trupa care ataca, al doilea numar la trupa pe care o ataca
+c nrSoldati nrCav nrMedici  //sa se adapteze trupele tale cand esti atacat (pe ecranul tau vor scadea trupele tale)
+d nrSoldati nrCav nrMedici //sa se adapteze trupele adversarului cand ataci (pe ecranul tau vor scadea trupele inamicilor)
+
+m 1/2/3 oponent 1/2/3		//e pentru medicis sa se vindece
+
+g nrSoldati nrCav nrMedici		//player foloseste medici 
+f nrSoldati nrCav nrMedici		//oponent a folosit medici
+
+q opponentName  	//opponentName a castigat
+
+w		//ati castigat
+l		//l ati pierdut
+
+k					//deconectez doar cu numele
 
 1 = soldat
 2 = cav

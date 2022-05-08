@@ -182,10 +182,19 @@ QString CDataBase::getResources(const QString& username)
 void CDataBase::updateResources(QStringList l, QString username)
 {
     QString id = getPlayerID(username);
-    QString updateQuery = "UPDATE Resurse SET Muncitori = " + l.value(1) + ",Galbeni =" + l.value(2) + ",AutorizatieMilitara=" + l.value(3) + ",AutorizatieMedicala=" + l.value(4) + ",Cavalerie=" + l.value(5) + ",Soldati=" + l.value(6) + ",Medici=" + l.value(7) + "WHERE PlayerID = " + id;
+    QString updateQuery = "UPDATE Resurse SET Muncitori = " + l.value(1) + ",Galbeni =" + l.value(2) + ",AutorizatieMilitara=" + l.value(3) + ",AutorizatieMedicala=" + l.value(4) + ",Cavalerie=" + l.value(5) + ",Soldati=" + l.value(6) + ",Medici=" + l.value(7) + "WHERE PlayerID = '" + id+"'";
     QSqlQuery query;
     query.exec(updateQuery);
 }
+
+void CDataBase::updateTroups(QStringList l, QString name)
+{
+    QString id = getPlayerID(name);
+    QString updateQuery = "UPDATE Resurse SET Muncitori = " + l.value(0) + ",Cavalerie=" + l.value(1) + ",Soldati=" + l.value(2) + ",Medici=" + l.value(3) + "WHERE PlayerID = '" + id+"'";
+    QSqlQuery query;
+    query.exec(updateQuery);
+}
+
 
 QString CDataBase::getOpponentArmy(QString opponentName)
 {
@@ -204,7 +213,7 @@ QString CDataBase::getOpponentArmy(QString opponentName)
 
 int CDataBase::getNumberSoldiers(QString name)
 {
-    QString q = "SELECT RESURSE.Soldati FROM RESURSE INNER JOIN Credentials ON Resurse.PlayerID = Credentials.ID WHERE Credentials.Username = '"+name+"'";
+    QString q = "SELECT Arena.Soldati FROM Arena INNER JOIN Credentials ON Arena.ID = Credentials.ID WHERE Credentials.Username = '"+name+"'";
 
     QSqlQuery query;
     query.exec(q);
@@ -219,7 +228,7 @@ int CDataBase::getNumberSoldiers(QString name)
 
 int CDataBase::getNumberCav(QString name)
 {
-    QString q = "SELECT RESURSE.Cavalerie FROM RESURSE INNER JOIN Credentials ON Resurse.PlayerID = Credentials.ID WHERE Credentials.Username = '"+name+"'";
+    QString q = "SELECT Arena.Cavalerie FROM Arena INNER JOIN Credentials ON Arena.ID = Credentials.ID WHERE Credentials.Username = '"+name+"'";
 
     QSqlQuery query;
     query.exec(q);
@@ -234,7 +243,7 @@ int CDataBase::getNumberCav(QString name)
 
 int CDataBase::getNumberMeds(QString name)
 {
-    QString q = "SELECT RESURSE.Medici FROM RESURSE INNER JOIN Credentials ON Resurse.PlayerID = Credentials.ID WHERE Credentials.Username = '"+name+"'";
+    QString q = "SELECT Arena.Medici FROM Arena INNER JOIN Credentials ON Arena.ID = Credentials.ID WHERE Credentials.Username = '"+name+"'";
 
     QSqlQuery query;
     query.exec(q);
@@ -247,3 +256,112 @@ int CDataBase::getNumberMeds(QString name)
 
 }
 
+int CDataBase::getNumberInitialSoldiers(QString name)
+{
+    QString q = "SELECT Resurse.Soldati FROM Resurse INNER JOIN Credentials ON Resurse.PlayerID = Credentials.ID WHERE Credentials.Username = '"+name+"'";
+
+    QSqlQuery query;
+    query.exec(q);
+    QString res;
+
+    while (query.next())
+        res = query.value(0).toString();
+
+    return res.toInt();
+}
+
+int CDataBase::getNumberInitialCav(QString name)
+{
+    QString q = "SELECT Resurse.Cavalerie FROM Resurse INNER JOIN Credentials ON Resurse.PlayerID = Credentials.ID WHERE Credentials.Username = '"+name+"'";
+
+    QSqlQuery query;
+    query.exec(q);
+    QString res;
+
+    while (query.next())
+        res = query.value(0).toString();
+
+    return res.toInt();
+}
+
+int CDataBase::getNumberInitialMeds(QString name)
+{
+    QString q = "SELECT Resurse.Medici FROM Resurse INNER JOIN Credentials ON Resurse.PlayerID = Credentials.ID WHERE Credentials.Username = '"+name+"'";
+
+    QSqlQuery query;
+    query.exec(q);
+    QString res;
+
+    while (query.next())
+        res = query.value(0).toString();
+
+    return res.toInt();
+}
+
+void CDataBase::addFighters(QString player_1, QString player_2)
+{
+     QString id_1 = getPlayerID(player_1);
+     QString id_2 = getPlayerID(player_2);
+
+     QStringList l_1 = identifyResources(id_1);
+     QStringList l_2 = identifyResources(id_2);
+
+     QString q_1 = "INSERT INTO Arena (ID, Username, Cavalerie, Soldati, Medici) "
+                "VALUES ('"+id_1+"', '"+player_1+"', '"+l_1.value(4)+"', '"+l_1.value(5)+"', '"+l_1.value(6)+"')";
+
+     QString q_2 = "INSERT INTO Arena (ID, Username, Cavalerie, Soldati, Medici) "
+                "VALUES ('"+id_2+"', '"+player_2+"', '"+l_2.value(4)+"', '"+l_2.value(5)+"', '"+l_2.value(6)+"')";
+
+     QSqlQuery query;
+
+     qDebug() <<q_1;
+     qDebug () << q_2;
+
+     query.exec(q_1);
+     query.exec(q_2);
+}
+
+void CDataBase::updateArenaPlayer(QString playerName, int Soldati, int Cavalerie, int Medici)
+{
+    QString id = getPlayerID(playerName);
+    QString q = "UPDATE Arena SET Soldati='"+QString::number(Soldati)+"', Cavalerie='"+QString::number(Cavalerie)+"', Medici='"+QString::number(Medici)+"' WHERE ID='"+id+"'";
+    qDebug()<<q;
+    QSqlQuery query;
+    query.exec(q);
+}
+
+void CDataBase::deletePLayerFromArena(QString name)
+{
+    QString id = getPlayerID(name);
+
+   if(id!="")
+   {
+        QString q = "DELETE FROM Arena WHERE ID='"+id+"'";
+        QSqlQuery query;
+        query.exec(q);
+   }
+}
+
+void CDataBase::updateWin(QString name)
+{
+    QString id = getPlayerID(name);
+
+    QString q = "UPDATE Statistici SET Castiguri = Castiguri+1 WHERE PlayerID = '"+id+"'";
+
+    QSqlQuery query;
+    query.exec(q);
+
+    qDebug() <<q;
+}
+
+void CDataBase::updateLose(QString name)
+{
+    QString id = getPlayerID(name);
+
+    QString q = "UPDATE Statistici SET Infrangeri = Infrangeri+1 WHERE PlayerID = '"+id+"'";
+
+    QSqlQuery query;
+    query.exec(q);
+
+    qDebug() <<q;
+}

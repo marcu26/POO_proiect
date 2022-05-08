@@ -39,7 +39,7 @@ void CClient::onReadyRead()
             CLegatura::sendPlayersList(socket);   //trimite lista jucatorilor cu spatiu intre ei, inclusiv si userul care trimite requestul (3)
 
         else if (req[0] == '4')
-            CLegatura::sendPlayersListWithoutUser(socket, socketDescriptor);  //trimite lista jucatorilor fara a se pune si pe el (4)
+            CLegatura::sendPlayersListWithoutUser(socket, socketDescriptor);  //trimite lista jucatorilor fara a se pune si pe el (4) //mi-i arata doar pe cei care nu sunt intr-un duel
 
         else if (req[0] == '5')
             duelRequest(req);               //trimite provocarea la duel (5 playerProvocat)
@@ -53,20 +53,31 @@ void CClient::onReadyRead()
         else if(req[0]=='8')
             setPauseForOpponent(req);       // (8 opponenName) (v-a trebui ca toma sa retina numele oponentului)
 
+        else if (req[0] == 'e')
+            endPauseForOpponent(req);       //(e opponentName)
+
         else if(req[0] == '9')
-            recieveChallengedAnswer(req);  //(9 playerName raspuns) //raspuns = 0 sau 1
+            recieveChallengedAnswer(req);  //(9 opponent raspuns) //raspuns = 0 sau 1
 
         else if (req[0] == 'a')
-            sendOpponentArmy(req);
+            sendOpponentArmy(req);         //(a opponentName)
 
-        else if (req[0] == 'b')
+        else if (req[0] == 'b')            //(b 1/2 opponentName 1/2)
             manageAttack(req);
+
+        else if(req[0] == 'm')
+            manageHeal(req);            //(m 1/2/3 opponentName)
+
+        else if (req[0] == 'q')
+            manageLoseMasaVerde(req);       //(q opponentName)
+
+        else if (req[0] == 'k')
+            deleteName();
 
         else
         {
             throw new CException("Protocol nerecunoscut!",-7);
         }
-
 }
 
 void CClient::felicita()
@@ -88,6 +99,7 @@ void CClient::autentification(QString &req)             //VERIFICARE DACA NU EST
         socket->flush();
         socket->write("1 1");                   //REUSIT
         transmitResource();
+        inArena = 0;
         }
     else
     {
@@ -156,7 +168,10 @@ void CClient::recieveChallengedAnswer(QString answ)
 {
     QStringList l = answ.split(QRegularExpression("\\W+"), Qt::SkipEmptyParts);
 
-    CLegatura::sendAnswerToChallenger(l.value(1),this->username ,l.value(2));
+    if(l.value(2) == "1")
+        inArena = 1;
+
+    CLegatura::sendAnswerToChallenger(l.value(1),this->username,l.value(2));
 }
 
 void CClient::sendOpponentArmy(QString req)
@@ -177,10 +192,38 @@ void CClient::manageAttack(QString req)
     CLegatura::sendAttackMoveResult(this->socket, this->username, l.value(2), l.value(1), l.value(3));
 }
 
+void CClient::endPauseForOpponent(QString req)
+{
+    QStringList l = req.split(QRegularExpression("\\W+"), Qt::SkipEmptyParts);
+
+    CLegatura::endPauseForOpponent(l.value(1));
+}
+
+void CClient::manageHeal(QString req)
+{
+    QStringList l = req.split(QRegularExpression("\\W+"), Qt::SkipEmptyParts);
+
+    CLegatura::sendHealResults(this->username,l.value(3),l.value(2));
+}
+
+void CClient::manageLoseMasaVerde(QString req)
+{
+    QStringList l = req.split(QRegularExpression("\\W+"), Qt::SkipEmptyParts);
+
+    CLegatura::loseMasaVerde(this->username, l.value(1));
+}
+
+void CClient::deleteName()
+{
+    this->username = "";
+    //qDebug() <<"A AJUNS AICI";
+}
+
 void CClient::onDisconnected()
 {
     qDebug() <<"S-a deconectat: "<<this->socketDescriptor<<"\n";
     active = 0;
     CLog::getInstance().PlayerLogOut("Utilizatorul cu username-ul: "+this->username+" s-a deconectat");
     socket->deleteLater();
+    database.deletePLayerFromArena(this->username);
 }
