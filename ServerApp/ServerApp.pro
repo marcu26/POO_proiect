@@ -14,10 +14,17 @@ SOURCES += \
         CClient.cpp \
         CClientList.cpp \
         SHA256.cpp \
+        absclient.cpp \
         cdatabase.cpp \
+        cerrorlog.cpp \
         cexception.cpp \
+        cfactoryclient.cpp \
+        cfactorylog.cpp \
         clegatura.cpp \
-        clog.cpp \
+        cloginlog.cpp \
+        clogoutlog.cpp \
+        cprotocol.cpp \
+        cregisterlog.cpp \
         cserver.cpp \
         main.cpp
 
@@ -30,9 +37,18 @@ HEADERS += \
     CClient.h \
     CClientList.h \
     SHA256.h \
+    absclient.h \
     cdatabase.h \
+    cerrorlog.h \
     cexception.h \
+    cfactoryclient.h \
+    cfactorylog.h \
     clegatura.h \
-    clog.h \
+    cloginlog.h \
+    clogoutlog.h \
+    cprotocol.h \
+    cregisterlog.h \
     cserver.h \
-    iexception.h
+    iclient.h \
+    iexception.h \
+    ilog.h

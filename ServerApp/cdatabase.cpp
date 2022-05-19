@@ -2,6 +2,7 @@
 #include "SHA256.h"
 #include <QDateTime>
 
+CDataBase *CDataBase::instance = nullptr;
 CDataBase::CDataBase()
 {
 
@@ -154,13 +155,47 @@ QStringList CDataBase::identifyResources(QString idPlayer)
    return l;
 }
 
-void CDataBase::writeInLog(QString message)
+void CDataBase::writeInLog(QString type,QString message)
 {
     QSqlQuery query;
-    QString insertValue = "INSERT INTO Journal (TimeStamp, Message) "
-                "VALUES ('"+QDateTime::currentDateTime().toString()+"'"+",'"+message+"'"+")";
+    QString insertValue = "INSERT INTO Journal (TimeStamp,Type ,Message) "
+                "VALUES ('"+QDateTime::currentDateTime().toString()+"'"+",'"+type+"'"+",'"+message+"'"+")";
 
     query.exec(insertValue);
+}
+
+QString CDataBase::getStats(QString username)
+{
+    QString id = getPlayerID(username);
+
+    QSqlQuery query;
+    QString s = "SELECT Castiguri, Infrangeri from"
+           " Statistici inner join Credentials "
+           " on Statistici.PlayerID = Credentials.ID "
+         "   where Credentials.ID = "+id;
+    query.exec(s);
+    query.next();
+
+    QString stats = query.value(0).toString()+" "+query.value(1).toString();
+    return stats;
+}
+
+CDataBase& CDataBase::getInstance()
+{
+    if(instance == nullptr)
+    {
+        instance = new CDataBase();
+    }
+    return *instance;
+}
+
+void CDataBase::destroy()
+{
+    if(this->instance !=nullptr)
+       {
+         delete this->instance;
+         this->instance = nullptr;
+       }
 }
 
 QString CDataBase::getResources(const QString& username)
@@ -193,6 +228,11 @@ void CDataBase::updateTroups(QStringList l, QString name)
     QString updateQuery = "UPDATE Resurse SET Muncitori = " + l.value(0) + ",Cavalerie=" + l.value(1) + ",Soldati=" + l.value(2) + ",Medici=" + l.value(3) + "WHERE PlayerID = '" + id+"'";
     QSqlQuery query;
     query.exec(updateQuery);
+}
+
+CDataBase::~CDataBase()
+{
+   destroy();
 }
 
 

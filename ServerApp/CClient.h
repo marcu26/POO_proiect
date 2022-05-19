@@ -1,21 +1,16 @@
 #ifndef CCLIENT_H
 #define CCLIENT_H
 
-#include <QObject>
-#include <QDebug>
-#include <QTcpSocket>
+#include "absclient.h"
 
 #include "cdatabase.h"
 
-class CClient : public QObject       //fiecare client va reprezenta un thread
+class CClient : public AbsClient
 {
     Q_OBJECT
 
 private:
-    QTcpSocket *socket;             //conectiunea clientului
-    qintptr socketDescriptor;
     QString username = " ";
-    CDataBase database;
     bool active;            //verifica activitatea clientului (daca mai este conectat sau nu)
     bool inArena;
 
@@ -31,8 +26,6 @@ public:
     void registerUser(QString &req);
     bool getActivate() {return active;}
     QString getUsername() {return username;}
-    QTcpSocket *getSocket() {return socket;}
-    qintptr getSocketDescriptor() {return this->socketDescriptor;}
     void duelRequest(QString);
     void transmitResource();
     void saveResource(QString req);
@@ -46,6 +39,9 @@ public:
     void deleteName();
     bool getInArena() {return inArena;}
     void setInArena(const bool &a) {inArena = a;}
+    virtual void transmitStats() override;
+
+    virtual ~CClient() {};
 };
 
 #endif // CCLIENT_H

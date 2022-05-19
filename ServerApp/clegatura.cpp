@@ -86,7 +86,7 @@ bool CLegatura::verfyConection(QString playerName)
     CClientList &list = CClientList::getInstance();
 
     list.eraseInactivePointer();
-    CClient * client = list.getPlayer(playerName);
+    IClient * client = list.getPlayer(playerName);
     if(client == nullptr)
         return 0;
     return 1;
@@ -108,7 +108,7 @@ void CLegatura::sendAnswerToChallenger(QString challenger, QString playerName, Q
         if(raspuns == "1")
         {
             //adauag oponentii in arena
-            CDataBase db;
+            CDataBase &db = CDataBase::getInstance();
             db.connectDataBase();
             db.addFighters(challenger, playerName);
             list.setOnInArena(challenger);
@@ -131,7 +131,7 @@ void CLegatura::ifZero(int &ivalue, float fvalue)
 
 void CLegatura::updateLostResources(QString name)
 {
-    CDataBase db;
+    CDataBase& db = CDataBase::getInstance();
     db.connectDataBase();
 
     QStringList l = db.identifyResources(db.getPlayerID(name));
@@ -191,7 +191,7 @@ void CLegatura::sendAttackMoveResult(QTcpSocket *player, QString playerName,QStr
     list.eraseInactivePointer();
     QTcpSocket *opponent = list.getPlayerSocket(opponentName);
 
-    CDataBase db;
+    CDataBase &db = CDataBase::getInstance();
 
     db.connectDataBase();
 
@@ -273,7 +273,7 @@ void CLegatura::sendHealResults(QString playerName, QString healedTroup, QString
     CClientList &list = CClientList::getInstance();
     list.eraseInactivePointer();
 
-    CDataBase db;
+    CDataBase& db = CDataBase::getInstance();
 
     int numberMed = db.getNumberMeds(playerName);
     int v[4];
@@ -319,7 +319,7 @@ void CLegatura::loseMasaVerde(QString playerName, QString opponentName)
     CClientList &list = CClientList::getInstance();
     list.eraseInactivePointer();
 
-    CDataBase db;
+    CDataBase &db = CDataBase::getInstance();
 
     db.connectDataBase();
 

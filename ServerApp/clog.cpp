@@ -8,10 +8,10 @@ CLog::CLog()
 
 void CLog::destroy()
 {
-    if(instance != nullptr)
+    if(this->instance != nullptr)
     {
-        delete instance;
-        instance = nullptr;
+        delete this->instance;
+        this->instance = nullptr;
     }
 }
 

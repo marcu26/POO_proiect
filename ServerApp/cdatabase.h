@@ -8,17 +8,22 @@
 class CDataBase
 {
 private:
-    friend class CLog;
 
     QSqlDatabase db;
     QVector<QPair<QString, QString>> credentials;
 
-private:
-     bool usernameExist(const QString &username);
+    static CDataBase *instance;
 
-     void writeInLog(QString message);
-public:
+private:
      CDataBase();
+     CDataBase(const CDataBase &obj) = delete;
+     CDataBase(const CDataBase &&obj) = delete;
+
+     bool usernameExist(const QString &username);
+public:
+    static CDataBase& getInstance();
+    void destroy();
+
     void connectDataBase();
 
     void readCredentials();
@@ -41,6 +46,10 @@ public:
     void updateWin(QString name);
     void updateLose(QString name);
     void updateTroups(QStringList, QString name);
+    void writeInLog(QString type,QString message);
+    QString getStats(QString username);
+
+    ~CDataBase();
 };
 
 #endif // CDATABASE_H

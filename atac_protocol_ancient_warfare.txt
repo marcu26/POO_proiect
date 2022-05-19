@@ -18,6 +18,8 @@ m 1/2/3 oponent 1/2/3		//e pentru medicis sa se vindece
 g nrSoldati nrCav nrMedici		//player foloseste medici 
 f nrSoldati nrCav nrMedici		//oponent a folosit medici
 
+s nr_victorii nr_infrangeri
+
 q opponentName  	//opponentName a castigat
 
 w		//ati castigat

@@ -1,5 +1,6 @@
 #include "cserver.h"
 #include "cexception.h"
+#include "cfactoryclient.h"
 
 CServer* CServer::instance = nullptr;
 
@@ -34,6 +35,6 @@ void CServer::startServer()
 void CServer::incomingConnection(qintptr socketDescriptor)
 {
     qDebug() << socketDescriptor << " Conectare...";
-    CClient *client = new CClient(qintptr(socketDescriptor),this);
+    IClient *client = CFactoryClient::getClient(socketDescriptor);
     list.addClient(client);
 }

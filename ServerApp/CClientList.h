@@ -2,18 +2,18 @@
 #define CCLIENTLIST_H
 
 
-#include "CClient.h"
+#include "iclient.h"
 #include <QVector>
 
 class CClientList
 {
 private:
-    QVector<CClient *> list;
+    QVector<IClient *> list;
     static CClientList *instance;
 
 public:
 
-    void addClient(CClient * client);
+    void addClient(IClient * client);
     void eraseInactivePointer();
     void setOnInArena(QString playerName);
     void setOffInArena(QString playerName);
@@ -21,9 +21,11 @@ public:
     QString getPlayersList();
     QString getPlayerListWithoutUser(qintptr socketDescrpitor);
     QTcpSocket * getPlayerSocket(QString username);
-    CClient* getPlayer(QString username);
+    IClient* getPlayer(QString username);
     void destroy();
     static CClientList &getInstance();
+
+    IClient* operator [] (const qintptr socketDescriptor);
 
 private:
     CClientList();

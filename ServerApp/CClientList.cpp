@@ -6,14 +6,14 @@ CClientList::CClientList()
 
 }
 
-void CClientList::addClient(CClient *client)
+void CClientList::addClient(IClient *client)
 {
     list.push_back(client);
 }
 
 void CClientList::eraseInactivePointer()
 {
-    list.erase(std::remove_if(list.begin(), list.end(), [](CClient* i) { return (i->getActivate()==false); }),
+    list.erase(std::remove_if(list.begin(), list.end(), [](IClient* i) { return (i->getActivate()==false); }),
             list.end());
 }
 
@@ -83,7 +83,7 @@ QTcpSocket *CClientList::getPlayerSocket(QString username)
     return nullptr;
 }
 
-CClient* CClientList::getPlayer(QString username)
+IClient* CClientList::getPlayer(QString username)
 {
     for (auto& it : list)
     {
@@ -109,4 +109,18 @@ CClientList &CClientList::getInstance()
         instance = new CClientList();
     }
     return (*instance);
+}
+
+IClient *CClientList::operator [](const qintptr socketDescriptor)
+{
+   IClient *client = nullptr;
+   for(auto &it:list)
+   {
+       if(socketDescriptor == it->getSocketDescriptor())
+       {
+           client = it;
+           break;
+       }
+   }
+   return client;
 }
