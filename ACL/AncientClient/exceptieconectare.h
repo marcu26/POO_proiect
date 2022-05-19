@@ -11,6 +11,7 @@ private:
 public:
     ExceptieConectare();
     ExceptieConectare(QString msg){this->msg=msg;};
+
     QString getMsg() override{return msg;};
 };
 

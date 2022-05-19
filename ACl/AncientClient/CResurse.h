@@ -33,6 +33,8 @@ public:
     void subLose();
 
 
+
+
     void initResurse(QStringList& l); //initializeaza resurse din informatii de la server, e o functie apelata pe informatii de la server
     QString getResourcesString(); //creaza un string cu dataele pentru a fi trimise la server (7 + date in ordine), 7 de la protocol
 
