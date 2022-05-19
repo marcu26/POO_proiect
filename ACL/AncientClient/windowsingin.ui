@@ -42,7 +42,7 @@
 background-color:rgb(0, 85, 127)</string>
    </property>
    <property name="text">
-    <string>Autentificare cu succes</string>
+    <string>Inregistrare cu succes</string>
    </property>
    <property name="alignment">
     <set>Qt::AlignCenter</set>
@@ -251,7 +251,10 @@ background-color: rgba(255, 0, 0,80%);</string>
    </property>
    <property name="styleSheet">
     <string notr="true">color: rgb(255, 255, 255);
-background-color: rgba(0, 0, 0,60%);</string>
+background-color: rgba(0, 0, 0,60%);
+border-style: solid;
+border-width: 2px;
+border-radius: 10px;</string>
    </property>
    <property name="text">
     <string>Pune credentialele pentru a te inregistra</string>
@@ -272,6 +275,29 @@ background-color: rgba(0, 0, 0,60%);</string>
    <property name="styleSheet">
     <string notr="true"/>
    </property>
+   <widget class="QLabel" name="banner_2">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>140</y>
+      <width>400</width>
+      <height>40</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">color: rgb(255, 255, 255);
+background-color: rgba(0, 0, 85,60%);
+border-style: solid;
+border-width: 2px;
+border-radius: 10px;</string>
+    </property>
+    <property name="text">
+     <string>Minim 8 caractere ambele, fara spatii</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignCenter</set>
+    </property>
+   </widget>
   </widget>
   <zorder>widget</zorder>
   <zorder>succes</zorder>

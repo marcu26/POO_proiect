@@ -4,8 +4,8 @@
 class CException :
     public IException
 {
-    std::string msg;
+    QString msg;
 public:
-    std::string getMsg() { return msg; };
+     QString getMsg() override{ return msg; };
 };
 

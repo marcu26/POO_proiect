@@ -35,6 +35,7 @@ void WindowSingIn::on_finnishB_clicked()
              if(ui->Pass_2->text()==ui->Pass->text())
              {
             QString str="2 "+ui->uName->text()+" "+ui->Pass->text();
+            Singleton::getInstance().getCl().setUName(this->ui->uName->text());
             Singleton::getInstance().getCl().sendInfoToServer(str);
              }
              else
@@ -61,6 +62,7 @@ void WindowSingIn::allIsGood()
 {
     ui->succes->show();
     ui->invalid->hide();
+    this->hide();
 }
 
 void WindowSingIn::allIsWrong()

@@ -1,8 +1,6 @@
 #include "windowadunare.h"
 #include "ui_windowadunare.h"
 #include "Singleton.h"
-#include <QElapsedTimer>
-#include <QTimer>
 #include <QListWidgetItem>
 #include <QtDebug>
 
@@ -12,6 +10,29 @@ void windowAdunare::addAndSet()
     Singleton::getInstance().addandset();
 }
 
+void windowAdunare::addSold()
+{
+     Singleton::getInstance().getCl().getResurse().getSold().modifyNumber(nrSold);
+     Singleton::getInstance().getCl().sendInfoToServer(Singleton::getInstance().getCl().getResurse().getResourcesString());
+     nrSold=0;
+     this->ui->nrSold->setText("Nr: "+QString::number(nrSold));
+}
+
+void windowAdunare::addMed()
+{
+     Singleton::getInstance().getCl().getResurse().getMed().modifyNumber(nrMed);
+     Singleton::getInstance().getCl().sendInfoToServer(Singleton::getInstance().getCl().getResurse().getResourcesString());
+     nrMed=0;
+     this->ui->nrMed->setText("Nr: "+QString::number(nrMed));
+}
+
+void windowAdunare::addCav()
+{
+     Singleton::getInstance().getCl().getResurse().getCav().modifyNumber(nrCav);
+     Singleton::getInstance().getCl().sendInfoToServer(Singleton::getInstance().getCl().getResurse().getResourcesString());
+     nrCav=0;
+     this->ui->nrCav->setText("Nr: "+QString::number(nrCav));
+}
 
 windowAdunare::windowAdunare(QWidget *parent) :
     QDialog(parent),
@@ -19,8 +40,11 @@ windowAdunare::windowAdunare(QWidget *parent) :
 {
     ui->setupUi(this);
     QTimer *timer = new QTimer(this);
-    connect(timer, &QTimer::timeout, this, &windowAdunare::addAndSet);
-    timer->start(2000);
+      timer->start(2000);
+    connect(timer,&QTimer::timeout, this, &windowAdunare::addAndSet);
+    connect(timerMed, &QTimer::timeout, this, &windowAdunare::addMed);
+    connect(timerCav, &QTimer::timeout, this, &windowAdunare::addCav);
+    connect(timerSold, &QTimer::timeout, this, &windowAdunare::addSold);
     this->ui->ScMedici->hide();
     this->ui->ScSoldati->hide();
     this->ui->ScCav->hide();
@@ -31,6 +55,10 @@ windowAdunare::windowAdunare(QWidget *parent) :
     this->ui->lineEdit->setEnabled(false);
     this->ui->user_refuz->hide();
     this->ui->provocare->hide();
+    this->ui->players->hide();
+    this->ui->nrCav->hide();
+    this->ui->nrMed->hide();
+    this->ui->nrSold->hide();
 }
 
 windowAdunare::~windowAdunare()
@@ -61,14 +89,7 @@ void windowAdunare::on_LogInB_clicked()
    this->hide();
    Singleton::getInstance().getCl().sendInfoToServer(Singleton::getInstance().getCl().getResurse().getResourcesString());
    Singleton::getInstance().showMW();
-   this->ui->ScMedici->hide();
-   this->ui->ScSoldati->hide();
-   this->ui->ScCav->hide();
-   this->ui->sold->hide();
-   this->ui->sold_2->hide();
-   this->ui->sold_3->hide();
-   this->ui->provocare->hide();
-   this->ui->Refuz->hide();
+   this->hideThings();
    Singleton::getInstance().getCl().clearSocket();
    Singleton::getInstance().getCl().sendInfoToServer("k");
 }
@@ -89,7 +110,6 @@ void windowAdunare::changeStyleSheet()
     this->ui->ScMedici->setStyleSheet(func);
     func="background-image:url("+Singleton::getInstance().getPath()+"/Media/poza8.jpg);"+"background-color: rgba(0, 0, 0,80%);border-style: solid; border-width: 4px;border-radius: 10px;border-color:black;";
     this->ui->ScCav->setStyleSheet(func);
-
 }
 
 void windowAdunare::showBuildings()
@@ -99,14 +119,19 @@ void windowAdunare::showBuildings()
     {
         this->ui->ScCav->show();
         this->ui->sold->show();
+        this->ui->nrCav->show();
+
         this->ui->ScSoldati->show();
         this->ui->sold_3->show();
+        this->ui->nrSold->show();
     }
     if(Singleton::getInstance().getCl().getResurse().getMedic()==1)
     {
         this->ui->ScMedici->show();
         this->ui->sold_2->show();
+        this->ui->nrMed->show();
     }
+
 }
 
 void windowAdunare::on_Shop_clicked()
@@ -117,38 +142,39 @@ void windowAdunare::on_Shop_clicked()
 
 void windowAdunare::on_ScSoldati_clicked()
 {
-    if(Singleton::getInstance().getCl().getResurse().getGalbeni()>=30)
+    if(Singleton::getInstance().getCl().getResurse().getGalbeni()>=30 && nrSold < 5)
     {
         Singleton::getInstance().getCl().getResurse().subGalbeni(30);
-        Singleton::getInstance().getCl().getResurse().getSold().modifyNumber(1);
-        Singleton::getInstance().showAW();
-        Singleton::getInstance().getCl().sendInfoToServer(Singleton::getInstance().getCl().getResurse().getResourcesString());
+        nrSold++;
+        this->ui->nrSold->setText("Nr: "+QString::number(nrSold));
+        timerSold->start(3000);
     }
 }
 
 
 void windowAdunare::on_ScCav_clicked()
 {
-    if(Singleton::getInstance().getCl().getResurse().getGalbeni()>=50)
+    if(Singleton::getInstance().getCl().getResurse().getGalbeni()>=50 && nrCav<5)
     {
         Singleton::getInstance().getCl().getResurse().subGalbeni(50);
-        Singleton::getInstance().getCl().getResurse().getCav().modifyNumber(1);
-        Singleton::getInstance().showAW();
-        Singleton::getInstance().getCl().sendInfoToServer(Singleton::getInstance().getCl().getResurse().getResourcesString());
+        nrCav++;
+        this->ui->nrCav->setText("Nr: "+QString::number(nrCav));
+        timerCav->start(4500);
     }
 }
 
 
 void windowAdunare::on_ScMedici_clicked()
 {
-    if(Singleton::getInstance().getCl().getResurse().getGalbeni()>=40)
+    if(Singleton::getInstance().getCl().getResurse().getGalbeni()>=40 && nrMed<3)
     {
         Singleton::getInstance().getCl().getResurse().subGalbeni(40);
-        Singleton::getInstance().getCl().getResurse().getMed().modifyNumber(1);
-        Singleton::getInstance().showAW();
-        Singleton::getInstance().getCl().sendInfoToServer(Singleton::getInstance().getCl().getResurse().getResourcesString());
-    }
+        nrMed++;
+        this->ui->nrMed->setText("Nr: "+QString::number(nrMed));
+        timerMed->start(3000);
 }
+}
+
 
 void windowAdunare::setPlayers(QString s)
 {
@@ -162,7 +188,13 @@ void windowAdunare::setPlayers(QString s)
     }
      this->ui->listWidget->show();
     if(this->ui->listWidget->count()==0)
+    {
         this->ui->listWidget->hide();
+        this->ui->players->show();
+    }
+    else
+          this->ui->players->hide();
+
 }
 
 
@@ -221,6 +253,7 @@ void windowAdunare::aRefuzat()
     this->ui->user_refuz->show();
 }
 
+//ai castigat/ai pierdut
 void windowAdunare::setShowText(QString s)
 {
     this->ui->user_refuz->setText(s);
@@ -232,6 +265,7 @@ void windowAdunare::on_Accept_clicked()
 {
     Singleton::getInstance().showATW();
     Singleton::getInstance().getCl().sendInfoToServer("9 "+Singleton::getInstance().getDusman()+" 1");
+    this->ui->provocare->hide();
     this->hide();
     Singleton::getInstance().getCl().clearSocket();
     Singleton::getInstance().getCl().sendInfoToServer("a "+Singleton::getInstance().getDusman());
@@ -241,5 +275,28 @@ void windowAdunare::hideThings()
 {
     this->ui->user_refuz->hide();
     this->ui->provocare->hide();
+    this->ui->ScSoldati->hide();
+    this->ui->ScCav->hide();
+    this->ui->sold->hide();
+    this->ui->sold_2->hide();
+    this->ui->sold_3->hide();
+    this->ui->listWidget->hide();
+    this->ui->lineEdit->setEnabled(false);
+    this->ui->user_refuz->hide();
+    this->ui->provocare->hide();
+    this->ui->players->hide();
+    this->ui->nrCav->hide();
+    this->ui->nrMed->hide();
+    this->ui->nrSold->hide();
 }
 
+void windowAdunare::setPlayer()
+{
+     this->ui->player->setText("User: "+Singleton::getInstance().getCl().getUName());
+}
+
+void windowAdunare::updateWL()
+{
+    this->ui->wins->setText("Castiguri: "+QString::number(Singleton::getInstance().getWins()));
+    this->ui->loses->setText("Infrangeri: "+QString::number(Singleton::getInstance().getLoses()));
+}

@@ -14,6 +14,8 @@ class windowAttack : public QDialog
 
 private:
     QSoundEffect effect;
+    QSoundEffect effect1;
+    QSoundEffect effect2;
     QTimer *timer;
     QTimer *timer2;
     int trupa=0;
@@ -36,6 +38,7 @@ public:
     void setTurn(int t){this->isMyTurn=t;};
     void setTuraBox(QString s);
     void setMyText(QString txt);
+    void setPlayer();
 
 
 

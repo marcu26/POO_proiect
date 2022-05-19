@@ -22,8 +22,11 @@ SOURCES += \
     ICaracter.cpp \
     IException.cpp \
     Singleton.cpp \
+    exceptieconectare.cpp \
+    gresources.cpp \
     main.cpp \
     mainwindow.cpp \
+    protocolinterpreter.cpp \
     windowadunare.cpp \
     windowattack.cpp \
     windowlogin.cpp \
@@ -42,7 +45,10 @@ HEADERS += \
     ICaracter.h \
     IException.h \
     Singleton.h \
+    exceptieconectare.h \
+    gresources.h \
     mainwindow.h \
+    protocolinterpreter.h \
     windowadunare.h \
     windowattack.h \
     windowlogin.h \

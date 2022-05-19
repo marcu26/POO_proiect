@@ -1,8 +1,9 @@
 #pragma once
 #include <string>
+#include <QString>
 class IException
 {
 public:
-    virtual std::string getMsg()=0;
+    virtual QString getMsg()=0;
 };
 

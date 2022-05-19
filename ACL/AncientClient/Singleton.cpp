@@ -55,20 +55,17 @@ void Singleton::connectToServer()
 
 Singleton::Singleton()
 {
-
-}
-
-void Singleton::setPath(QString Path)
-{
-    this->path=Path;
+    path=qApp->applicationDirPath();
+    path=path+"/../../AncientClient";
+    qDebug()<<path;
 }
 
 void Singleton::setBG()
 {
-    lw.changeStyleSheet();
-    sw.changeStyleSheet();
-    aw.changeStyleSheet();
-    atw.changeStyleSheet();
-    mw.changeStyleSheet();
+    g.getLW().changeStyleSheet();
+    g.getSW().changeStyleSheet();
+    g.getAW().changeStyleSheet();
+    g.getATW().changeStyleSheet();
+    g.getMW().changeStyleSheet();
 
 }

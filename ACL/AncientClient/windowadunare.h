@@ -1,7 +1,7 @@
 #ifndef WINDOWADUNARE_H
 #define WINDOWADUNARE_H
 #include "CResurse.h"
-
+#include <QTimer>
 #include <QDialog>
 #include <QListWidgetItem>
 
@@ -15,6 +15,14 @@ class windowAdunare : public QDialog
     Q_OBJECT
 
 private:
+    int nrMed=0;
+    int nrSold=0;
+    int nrCav=0;
+
+    QTimer *timerMed = new QTimer(this);
+    QTimer *timerCav =new QTimer(this);
+    QTimer *timerSold = new QTimer(this);
+
 
 public:
     explicit windowAdunare(QWidget *parent = nullptr);
@@ -22,6 +30,9 @@ public:
     void setTexts(CResurse res);
     static void addAndSet();
     void setShowText(QString s);
+    void addMed();
+    void addCav();
+    void addSold();
 
 private slots:
     void on_LogInB_clicked();
@@ -44,6 +55,7 @@ private slots:
 
     void on_Accept_clicked();
 
+
 private:
     Ui::windowAdunare *ui;
 public:
@@ -54,6 +66,8 @@ public:
     void maProvoci(QString s);
     void aRefuzat();
     void hideThings();
+    void setPlayer();
+    void updateWL();
 };
 
 #endif // WINDOWADUNARE_H

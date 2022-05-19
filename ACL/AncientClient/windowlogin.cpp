@@ -30,6 +30,7 @@ void WindowLogIn::on_finnishB_clicked()
          if(!Singleton::getInstance().hasSpaces(ui->Pass->text()) && (ui->Pass->text().size()>=8))
          {
             QString str="1 "+ui->uName->text()+" "+ui->Pass->text();
+            Singleton::getInstance().getCl().setUName(this->ui->uName->text());
             Singleton::getInstance().getCl().sendInfoToServer(str);
          }
          else

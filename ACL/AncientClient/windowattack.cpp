@@ -15,6 +15,7 @@ windowAttack::windowAttack(QWidget *parent) :
     connect(timer, &QTimer::timeout, this, &windowAttack::endPause);
     timer2 = new QTimer(this);
     connect(timer2, &QTimer::timeout, this, &windowAttack::makePauseAvalabile);
+    this->ui->labelFara->hide();
 }
 
 windowAttack::~windowAttack()
@@ -40,6 +41,16 @@ void windowAttack::changeStyleSheet()
     effect.setSource(QUrl::fromLocalFile(Singleton::getInstance().getPath()+"/Media/Tonghioiu.wav"));
     effect.setLoopCount(1);
     effect.setVolume(0.25f);
+
+
+    effect1.setSource(QUrl::fromLocalFile(Singleton::getInstance().getPath()+"/Media/Mihnea.wav"));
+    effect1.setLoopCount(1);
+    effect1.setVolume(0.25f);
+
+
+    effect2.setSource(QUrl::fromLocalFile(Singleton::getInstance().getPath()+"/Media/Marcu.wav"));
+    effect2.setLoopCount(1);
+    effect2.setVolume(0.25f);
 
 }
 
@@ -108,12 +119,20 @@ void windowAttack::on_Da_clicked()
 
 void windowAttack::on_useSold_clicked()
 {
-    if(isMyTurn==1 && soldC>0){
+    if(isMyTurn==1 && soldC>0)
+    {
     effect.play();
     trupa=1;
     this->ui->trupa->setText("Folosesti soldatii");
     this->ui->FrameAtc->show();
     act="b ";
+    this->ui->labelFara->hide();
+    }
+
+    else if(isMyTurn==1 && soldC==0)
+    {
+        this->ui->labelFara->setText("Nu mai ai trupe din categoria soldati");
+        this->ui->labelFara->show();
     }
 
 }
@@ -122,12 +141,19 @@ void windowAttack::on_useSold_clicked()
 void windowAttack::on_useCav_clicked()
 {
     if(isMyTurn==1 && cavC>0){
-     effect.play();
+     effect2.play();
      trupa=2;
      this->ui->trupa->setText("Folosesti cavaleria");
      this->ui->FrameAtc->show();
      act="b ";
+     this->ui->labelFara->hide();
     }
+    else if(isMyTurn==1 && cavC==0)
+    {
+        this->ui->labelFara->setText("Nu mai ai trupe din categoria cavalerie");
+        this->ui->labelFara->show();
+    }
+
 }
 
 
@@ -135,11 +161,18 @@ void windowAttack::on_useMed_clicked()
 {
     if(isMyTurn==1 && medC>0)
     {
-     effect.play();
+     effect1.play();
      trupa=3;
      this->ui->trupa->setText("Folosesti medicii");
      this->ui->FrameAtc->show();
      act="m ";
+     this->ui->labelFara->hide();
+    }
+
+    else if(isMyTurn==1 && medC==0)
+    {
+        this->ui->labelFara->setText("Nu mai ai trupe din categoria medici");
+        this->ui->labelFara->show();
     }
 }
 
@@ -228,4 +261,9 @@ void windowAttack::makePauseAvalabile()
 void windowAttack::setTuraBox(QString s)
 {
     this->ui->tura->setStyleSheet(s);
+}
+
+void windowAttack::setPlayer()
+{
+    this->ui->player->setText("User: "+Singleton::getInstance().getCl().getUName());
 }

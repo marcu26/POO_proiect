@@ -12,8 +12,7 @@ class CClient:public QObject
 private:
 
 
-	std::string username;
-	std::string pass;
+    QString username;
 
     QTcpSocket socket;
     CResurse resurse;
@@ -28,6 +27,8 @@ public:
     void connect_client(QString ip, int port);
     void sendInfoToServer(QString string);
     void clearSocket(){socket.flush();};
+    void setUName(QString name){this->username=name;};
+    QString getUName(){return username;};
 
 };
 
