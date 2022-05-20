@@ -230,12 +230,6 @@ void CDataBase::updateTroups(QStringList l, QString name)
     query.exec(updateQuery);
 }
 
-CDataBase::~CDataBase()
-{
-   destroy();
-}
-
-
 QString CDataBase::getOpponentArmy(QString opponentName)
 {
     QString q = "SELECT RESURSE.Soldati, RESURSE.Cavalerie, RESURSE.Medici FROM Resurse INNER JOIN Credentials ON Resurse.PlayerID = Credentials.ID WHERE Credentials.Username = '"+opponentName+"'";
@@ -404,4 +398,9 @@ void CDataBase::updateLose(QString name)
     query.exec(q);
 
     qDebug() <<q;
+}
+
+CDataBase::~CDataBase()
+{
+   destroy();
 }

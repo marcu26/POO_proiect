@@ -20,12 +20,15 @@ SOURCES += \
         cexception.cpp \
         cfactoryclient.cpp \
         cfactorylog.cpp \
+        cfactoryprot.cpp \
+        cinterpret.cpp \
         clegatura.cpp \
         cloginlog.cpp \
         clogoutlog.cpp \
-        cprotocol.cpp \
+        cmultiprot.cpp \
         cregisterlog.cpp \
         cserver.cpp \
+        csingleprot.cpp \
         main.cpp
 
 # Default rules for deployment.
@@ -43,12 +46,16 @@ HEADERS += \
     cexception.h \
     cfactoryclient.h \
     cfactorylog.h \
+    cfactoryprot.h \
+    cinterpret.h \
     clegatura.h \
     cloginlog.h \
     clogoutlog.h \
-    cprotocol.h \
+    cmultiprot.h \
     cregisterlog.h \
     cserver.h \
+    csingleprot.h \
     iclient.h \
     iexception.h \
-    ilog.h
+    ilog.h \
+    iprotocol.h

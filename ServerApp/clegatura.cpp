@@ -19,7 +19,7 @@ void CLegatura::sendPlayersList(QTcpSocket *socket)
     socket->write(players.toUtf8());
 }
 
-void CLegatura::sendPlayersListWithoutUser(QTcpSocket *socket, qintptr socketDescriptor)
+void CLegatura::sendPlayersList(QTcpSocket *socket, qintptr socketDescriptor)
 {
     CClientList &list = CClientList::getInstance();
 
@@ -181,7 +181,6 @@ void CLegatura::updateLostResources(QString name)
    // qDebug() << l2.value(0)<< " "<< l2.value(5)<<" "<<l2.value(4)<<" "<<l.value(6);
 
     db.updateTroups(l2,name);
-    db.updateLose(name);
 }
 
 void CLegatura::sendAttackMoveResult(QTcpSocket *player, QString playerName,QString opponentName, QString attackTroup, QString opponentTroup)
@@ -329,17 +328,18 @@ void CLegatura::loseMasaVerde(QString playerName, QString opponentName)
     QTcpSocket *player = list.getPlayerSocket(playerName);
     QTcpSocket *opponent = list.getPlayerSocket(opponentName);
 
-    opponent->write("w");
     db.updateWin(opponentName);
+    opponent->write("w");
 
-    player->write("l");
     updateLostResources(playerName);
     db.updateLose(playerName);
+    player->write("l");
 
     db.connectDataBase();
     QString resources = "6 ";
     resources += db.getResources(playerName);
 
+    player->flush();
     player->flush();
     player->write(resources.toUtf8());
 

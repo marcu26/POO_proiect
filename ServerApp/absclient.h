@@ -3,6 +3,7 @@
 
 #include "iclient.h"
 #include "cdatabase.h"
+#include "cinterpret.h"
 
 class AbsClient :public QObject, public IClient
 {
@@ -11,6 +12,7 @@ protected:
     QTcpSocket *socket;             //conectiunea clientului
     qintptr socketDescriptor;
     CDataBase& database;
+    CInterpret interpret;
 
 public:
     AbsClient(qintptr id, QObject *parent = 0);

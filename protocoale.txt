@@ -1,5 +1,3 @@
-# POO_proiect
-
 Protocoale:
 1 username pass //este folosit pentru autentificare
 	-daca e oke trimit 1 1

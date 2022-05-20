@@ -22,24 +22,11 @@ public:
     CClient(qintptr id, QObject *parent = 0);
 
     void felicita();
-    void autentification(QString &req);
-    void registerUser(QString &req);
     bool getActivate() {return active;}
     QString getUsername() {return username;}
-    void duelRequest(QString);
-    void transmitResource();
-    void saveResource(QString req);
-    void setPauseForOpponent(QString req);
-    void recieveChallengedAnswer(QString answ);
-    void sendOpponentArmy(QString req);
-    void manageAttack(QString req);
-    void endPauseForOpponent(QString req);
-    void manageHeal(QString req);
-    void manageLoseMasaVerde(QString req);
-    void deleteName();
     bool getInArena() {return inArena;}
-    void setInArena(const bool &a) {inArena = a;}
-    virtual void transmitStats() override;
+    void setInArena(const bool &a) {inArena = a;};
+    virtual void setUsername(const QString& name ) override {this->username = name;};
 
     virtual ~CClient() {};
 };
